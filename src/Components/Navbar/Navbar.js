@@ -1,6 +1,6 @@
 import { React, useState } from "react";
-import logo from "./Images/Stunners.png";
 import "./navbar.css";
+import logo from "../../assets/Images/Stunners.png";
 
 export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);

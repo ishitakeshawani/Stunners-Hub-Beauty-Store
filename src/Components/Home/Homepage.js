@@ -1,8 +1,8 @@
 import { React,useEffect,useState } from "react";
 import { Footer, Navbar} from "../../Components";
 import { topbrandslist } from "../../backend/db/topbrands";
-import firstcollection from "./Images/collection1.jfif";
-import secondcollection from "./Images/collection2.jfif";
+import firstcollection from "../../assets/Images/collection1.jfif";
+import secondcollection from "../../assets/Images/collection2.jfif";
 import "./homepage.css";
 
 export default function Homepage() {
