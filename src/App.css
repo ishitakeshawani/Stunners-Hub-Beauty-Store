@@ -8,6 +8,7 @@
   --pink-color: #fc2678;
   --bg-color: #402f27;
   --border-color: #767676;
+  --category-box-shadow:0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 body {

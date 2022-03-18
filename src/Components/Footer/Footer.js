@@ -11,13 +11,13 @@ export function Footer() {
             Keshawani
           </div>
           <div>
-            <a href="">
+            <a href="https://github.com/ishitakeshawani/Stunners-Hub-Beauty-Store">
               <i className="fab fa-github footer-social-icon"></i>
             </a>
-            <a href="">
+            <a href="https://twitter.com/ishitakeshawani">
               <i className="fab fa-twitter footer-social-icon"></i>
             </a>
-            <a href="">
+            <a href="https://www.linkedin.com/in/ishitakeshawani/">
               <i className="fab fa-linkedin footer-social-icon"></i>
             </a>
           </div>

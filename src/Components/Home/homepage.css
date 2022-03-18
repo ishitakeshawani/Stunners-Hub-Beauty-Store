@@ -59,7 +59,7 @@
   cursor: pointer;
   width: 15rem;
   height: 15rem;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  box-shadow: var(--category-box-shadow);
 }
 
 .top-brands-item {
@@ -69,7 +69,7 @@
   cursor: pointer;
   width: 13rem;
   height: 15rem;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  box-shadow: var(--category-box-shadow);
 }
 
 .top-brands-item {
