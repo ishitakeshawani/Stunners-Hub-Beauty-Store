@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import logo from "./Images/Stunners.png";
 import "./navbar.css";
 
-export default function Navbar() {
+export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);
 
   const showMenu = () => {
