@@ -1,11 +1,12 @@
 import { React, useState, useEffect } from "react";
 import { useProduct } from "../../contexts/ProductProvider";
 import "../Products/products.css";
-import { getSortedData } from "../Filter/Filter";
+import { getSortedData, getFilteredData } from "../Filter/Filter";
 
 export function ProductsList() {
   const { state } = useProduct();
-  const sortedData = getSortedData(state, state.productList);
+  const filterData = getFilteredData(state, state.productList);
+  const sortedData = getSortedData(state, filterData);
 
   return (
     <div className="cards-list">
