@@ -12,6 +12,14 @@ export const getSortedData = (state, productList) => {
   return productList;
 };
 
+export const getFilteredData = (state, productList) => {
+  let data = [...productList];
+  if (state.FilterData.filterByRate.length !== 0) {
+    return state.FilterData.filterByRate;
+  }
+  return data;
+};
+
 export function Filter() {
   const { state, dispatch } = useProduct();
 
@@ -148,10 +156,11 @@ export function Filter() {
           <input
             type="radio"
             name="radio"
-            onClick={() => {
+            value="4STAR_AND_ABOVE"
+            onChange={(e) => {
               dispatch({
-                type: "SORT_BY_4STAR_AND_ABOVE",
-                payload: products,
+                type: "FILTER_BY_RATE",
+                payload: e.target.value,
               });
             }}
           />
@@ -161,10 +170,11 @@ export function Filter() {
           <input
             type="radio"
             name="radio"
-            onClick={() => {
+            value="3STAR_AND_ABOVE"
+            onChange={(e) => {
               dispatch({
-                type: "SORT_BY_3STAR_AND_ABOVE",
-                payload: products,
+                type: "FILTER_BY_RATE",
+                payload: e.target.value,
               });
             }}
           />
@@ -174,10 +184,11 @@ export function Filter() {
           <input
             type="radio"
             name="radio"
-            onClick={() => {
+            value="2STAR_AND_ABOVE"
+            onChange={(e) => {
               dispatch({
-                type: "SORT_BY_2STAR_AND_ABOVE",
-                payload: products,
+                type: "FILTER_BY_RATE",
+                payload: e.target.value,
               });
             }}
           />
@@ -187,10 +198,11 @@ export function Filter() {
           <input
             type="radio"
             name="radio"
-            onClick={() => {
+            value="1STAR_AND_ABOVE"
+            onChange={(e) => {
               dispatch({
-                type: "SORT_BY_1STAR_AND_ABOVE",
-                payload: products,
+                type: "FILTER_BY_RATE",
+                payload: e.target.value,
               });
             }}
           />
