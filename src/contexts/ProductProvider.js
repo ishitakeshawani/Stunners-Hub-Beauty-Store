@@ -35,6 +35,7 @@ function ProductProvider({ children }) {
     FilterData: {
       filterByCategories: [],
       filterByBrands: [],
+      filterByRate: []
     },
   };
 
