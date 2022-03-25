@@ -32,10 +32,10 @@ function ProductProvider({ children }) {
   const initialState = {
     productList: [],
     sortBy: "",
+    filterBy: "",
     FilterData: {
       filterByCategories: [],
       filterByBrands: [],
-      filterByRate: []
     },
   };
 
