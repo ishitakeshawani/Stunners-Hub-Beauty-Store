@@ -16,47 +16,48 @@ export const addFilters = (state, { type, payload }) => {
       if (payload === "1STAR_AND_ABOVE") {
         return {
           ...state,
-          FilterData: {
-            ...state.FilterData,
-            filterByRate: state.productList.filter(
-              (product) => product.rate >= 1
-            ),
-          },
+          filterBy: payload,
         };
       }
       if (payload === "2STAR_AND_ABOVE") {
         return {
           ...state,
-          FilterData: {
-            ...state.FilterData,
-            filterByRate: state.productList.filter(
-              (product) => product.rate >= 2
-            ),
-          },
+          filterBy: payload,
         };
       }
       if (payload === "3STAR_AND_ABOVE") {
         return {
           ...state,
-          FilterData: {
-            ...state.FilterData,
-            filterByRate: state.productList.filter(
-              (product) => product.rate >= 3
-            ),
-          },
+          filterBy: payload,
         };
       }
       if (payload === "4STAR_AND_ABOVE") {
         return {
           ...state,
-          FilterData: {
-            ...state.FilterData,
-            filterByRate: state.productList.filter(
-              (product) => product.rate >= 4
-            ),
-          },
+          filterBy: payload,
         };
       }
+    }
+
+    case "FILTER_BY_CATEGORY": {
+      return state.FilterData.filterByCategories.includes(payload)
+        ? {
+            ...state,
+            FilterData: {
+              ...state.FilterData,
+              filterByCategories: state.FilterData.filterByCategories.filter(
+                (item) => item !== payload
+              ),
+            },
+          }
+        : {
+            ...state,
+            FilterData: {
+              ...state.FilterData,
+              filterByCategories:
+                state.FilterData.filterByCategories.concat(payload),
+            },
+          };
     }
 
     //   // case "Perfumes":
