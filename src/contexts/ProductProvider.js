@@ -12,7 +12,8 @@ import { addFilters } from "./addFilters";
 const productContext = createContext();
 
 function ProductProvider({ children }) {
-  //   const [productList, setProductList] = useState([]);
+  const [user,setUser] = useState();
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,11 +24,6 @@ function ProductProvider({ children }) {
     fetchData();
   }, []);
 
-  // const getFilteredProducts = (category, payload) => {
-  //   console.log(category, payload);
-  //   return payload.filter((product) => product.categoryName == category);
-  //   // .filter((pro) => pro.categoryName == "deodorants");
-  // };
 
   const initialState = {
     productList: [],
@@ -43,7 +39,7 @@ function ProductProvider({ children }) {
   const [state, dispatch] = useReducer(addFilters, initialState);
 
   return (
-    <productContext.Provider value={{ state, dispatch }}>
+    <productContext.Provider value={{ state, dispatch, user, setUser }}>
       {children}
     </productContext.Provider>
   );
