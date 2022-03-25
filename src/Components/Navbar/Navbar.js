@@ -45,13 +45,13 @@ export function Navbar() {
             placeholder="Search on Stunners Hub"
           />
         </div>
-        <a
-          href="/pages/Authentication/login/login.html"
+        <Link
+          to="/login"
           class="link-no-style nav-link nav-icon-link"
         >
           <i class="fas fa-user hide-icon"></i>
           <span class="small-fontsize">Login</span>
-        </a>
+        </Link>
         <a
           href="/pages/wishlist/wishlist.html"
           class="link-no-style nav-link nav-icon-link"
