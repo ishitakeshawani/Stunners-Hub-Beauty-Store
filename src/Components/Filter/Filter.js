@@ -1,4 +1,5 @@
 import React from "react";
+import { categories } from "../../backend/db/categories";
 import { products } from "../../backend/db/products";
 import { useProduct } from "../../contexts/ProductProvider";
 
@@ -12,11 +13,31 @@ export const getSortedData = (state, productList) => {
   return productList;
 };
 
+export const filterByRate = (state, productList) => {
+  let data = [...productList];
+  if (state.filterBy === "1STAR_AND_ABOVE") {
+    data = [...productList].filter((product) => product.rate >= 1);
+  }
+  if (state.filterBy === "2STAR_AND_ABOVE") {
+    data = [...productList].filter((product) => product.rate >= 2);
+  }
+  if (state.filterBy === "3STAR_AND_ABOVE") {
+    data = [...productList].filter((product) => product.rate >= 3);
+  }
+  if (state.filterBy === "4STAR_AND_ABOVE") {
+    data = [...productList].filter((product) => product.rate >= 4);
+  }
+  return data;
+};
+
 export const getFilteredData = (state, productList) => {
   let data = [...productList];
-  if (state.FilterData.filterByRate.length !== 0) {
-    return state.FilterData.filterByRate;
+  if (state.FilterData.filterByCategories.length !== 0) {
+    data = data.filter((product) =>
+      state.FilterData.filterByCategories.includes(product.categoryName)
+    );
   }
+
   return data;
 };
 
@@ -46,108 +67,26 @@ export function Filter() {
       </div>
       <div className="filter-category">
         <div className="semibold-font-weight category-title">Category</div>
-        <div className="category-item">
-          Makeup
-          <img
-            className="cat-img"
-            src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-down-arrows-those-icons-lineal-those-icons-7.png"
-          />
-          <div className="category-item-list">
-            <div className="list">
-              <div className="inline-category-item">
-                <input type="checkbox" />
-                <label htmlFor="input">Eyes</label>
-              </div>
-              <div className="inline-category-item">
-                <input type="checkbox" />
-                <label htmlFor="input">Face</label>
-              </div>
-              <div className="inline-category-item">
-                <input type="checkbox" />
-                <label htmlFor="input">Lips</label>
-              </div>
-              <div className="inline-category-item">
-                <input type="checkbox" />
-                <label htmlFor="input">Nails</label>
-              </div>
+        {categories.map((category) => {
+          return (
+            <div className="inline-category-item">
+              <input
+                type="checkbox"
+                checked={state.FilterData.filterByCategories.includes(
+                  category.categoryName
+                )}
+                className="filter-input"
+                onChange={() =>
+                  dispatch({
+                    type: "FILTER_BY_CATEGORY",
+                    payload: category.categoryName,
+                  })
+                }
+              />
+              <label>{category.categoryName}</label>
             </div>
-          </div>
-        </div>
-        <div className="category-item">
-          Skincare
-          <img
-            className="cat-img"
-            src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-down-arrows-those-icons-lineal-those-icons-7.png"
-          />
-          <div className="category-item-list">
-            <div className="list">
-              <div className="inline-category-item">
-                <input type="checkbox" />
-                <label htmlFor="input">Cleaners</label>
-              </div>
-
-              <div className="inline-category-item">
-                <input type="checkbox" />
-                <label htmlFor="input">Body care</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="category-item">
-          Haircare
-          <img
-            className="cat-img"
-            src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-down-arrows-those-icons-lineal-those-icons-7.png"
-          />
-          <div className="category-item-list">
-            <div className="list">
-              <div className="inline-category-item">
-                <input type="checkbox" />
-                <label htmlFor="input">Shampoo</label>
-              </div>
-
-              <div className="inline-category-item">
-                <input type="checkbox" />
-                <label htmlFor="input">Hair Serum</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="category-item">
-          Fragrances
-          <img
-            className="cat-img"
-            src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-down-arrows-those-icons-lineal-those-icons-7.png"
-          />
-          <div className="category-item-list">
-            <div className="list">
-              <div className="inline-category-item">
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    dispatch({
-                      type: "Perfumes",
-                      payload: products,
-                    });
-                  }}
-                />
-                <label htmlFor="input">Perfumes</label>
-              </div>
-              <div className="inline-category-item">
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    dispatch({
-                      type: "Dedorants",
-                      payload: products,
-                    });
-                  }}
-                />
-                <label htmlFor="input">Deodorants</label>
-              </div>
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
 
       <div className="rating-section">
@@ -156,6 +95,7 @@ export function Filter() {
           <input
             type="radio"
             name="radio"
+            className="filter-input"
             value="4STAR_AND_ABOVE"
             onChange={(e) => {
               dispatch({
@@ -170,6 +110,7 @@ export function Filter() {
           <input
             type="radio"
             name="radio"
+            className="filter-input"
             value="3STAR_AND_ABOVE"
             onChange={(e) => {
               dispatch({
@@ -184,6 +125,7 @@ export function Filter() {
           <input
             type="radio"
             name="radio"
+            className="filter-input"
             value="2STAR_AND_ABOVE"
             onChange={(e) => {
               dispatch({
@@ -198,6 +140,7 @@ export function Filter() {
           <input
             type="radio"
             name="radio"
+            className="filter-input"
             value="1STAR_AND_ABOVE"
             onChange={(e) => {
               dispatch({
