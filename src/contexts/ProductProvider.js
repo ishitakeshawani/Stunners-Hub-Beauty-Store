@@ -33,6 +33,7 @@ function ProductProvider({ children }) {
     productList: [],
     sortBy: "",
     filterBy: "",
+    getByPrice: "",
     FilterData: {
       filterByCategories: [],
       filterByBrands: [],

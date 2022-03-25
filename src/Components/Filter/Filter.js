@@ -41,6 +41,12 @@ export const getFilteredData = (state, productList) => {
   return data;
 };
 
+export const getFilterByPrice = (state, productList) => {
+  let data = [...productList];
+  data = data.filter((product) => product.price >= state.getByPrice);
+  return data;
+};
+
 export function Filter() {
   const { state, dispatch } = useProduct();
 
@@ -48,20 +54,31 @@ export function Filter() {
     <div className="filter">
       <div className="filter-heading">
         <div className="semibold-font-weight">FILTERS</div>
-        <button className="clear-all-btn bold-font-weight">CLEAR</button>
+        <button className="clear-all-btn bold-font-weight" onClick={() =>
+          {
+            dispatch({
+              type:"CLEAR"
+            })
+          }
+        }>CLEAR</button>
       </div>
       <div className="price-section">
         <div className="price semibold-font-weight price-title">Price</div>
         <div className="range">
-          <span>200</span>
-          <span>2500</span>
-          <span>5000</span>
+          <span>100</span>
+          <span>500</span>
+          <span>1000</span>
         </div>
         <input
           type="range"
-          min="200"
-          max="5000"
-          value="2500"
+          min="100"
+          max="1000"
+          onChange={(e) => {
+            dispatch({
+              type: "FILTER_BY_PRICE",
+              payload: e.target.value,
+            });
+          }}
           className="slider"
         />
       </div>
@@ -159,6 +176,7 @@ export function Filter() {
           <input
             type="radio"
             name="sort_by_price"
+            className="filter-input"
             value="PRICE_HIGH_TO_LOW"
             onChange={(e) =>
               dispatch({
@@ -173,6 +191,7 @@ export function Filter() {
           <input
             type="radio"
             name="sort_by_price"
+            className="filter-input"
             value="PRICE_LOW_TO_HIGH"
             onChange={(e) =>
               dispatch({

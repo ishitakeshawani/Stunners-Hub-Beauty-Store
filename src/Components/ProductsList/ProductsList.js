@@ -1,11 +1,12 @@
 import { React, useState, useEffect } from "react";
 import { useProduct } from "../../contexts/ProductProvider";
 import "../Products/products.css";
-import { getSortedData, getFilteredData, filterByRate } from "../Filter/Filter";
+import { getSortedData, getFilteredData, filterByRate, getFilterByPrice } from "../Filter/Filter";
 
 export function ProductsList() {
   const { state } = useProduct();
-  const filterData = getFilteredData(state, state.productList);
+  const filterByPriceData = getFilterByPrice(state, state.productList);
+  const filterData = getFilteredData(state, filterByPriceData);
   const filterByRateData = filterByRate(state, filterData);
   const sortedData = getSortedData(state, filterByRateData);
  

@@ -124,7 +124,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Livon Hair Serum for Women & Men| All Hair Types |Smooth, Frizz free & Glossy Hair",
-    price: "60",
+    price: "100",
     categoryName: "Haircare",
     rate: 4,
     image:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/9/4991c9c8901088062374_1.jpg"
@@ -140,7 +140,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Guerlain Aqua Allegoria Flora Cherrysia Eau De Toilette",
-    price: "1500",
+    price: "1000",
     categoryName: "Fragrances",
     rate: 4,
     image:"https://images-static.nykaa.com/media/catalog/product/g/0/g013652.jpg"

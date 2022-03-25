@@ -60,29 +60,27 @@ export const addFilters = (state, { type, payload }) => {
           };
     }
 
-    //   // case "Perfumes":
-    //   //   return {
-    //   //     ...state,
-    //   //     productList: state.productList.filter(
-    //   //       (product) => product.categoryName === "perfumes"
-    //   //     ),
-    //   //     // getFilteredProducts("perfumes", action.payload),
-    //   //     // [...new Set([
-    //   //     //   ...action.payload.filter(
-    //   //     //    (product) => product.categoryName == "perfumes"
-    //   //     //  ), ...state.productList])]
-    //   //   };
-    //   // case "Dedorants":
-    //   return {
-    //     // ...state,
-    //     // productList: state.productList.filter(
-    //     //   (product) => product !== action.payload
-    //     // ),
-    //     // [...new Set([
-    //     //   ...action.payload.filter(
-    //     //    (product) => product.categoryName == "deodorants"
-    //     //  ),...state.productList])]
-    //   };
+    case "FILTER_BY_PRICE": {
+      console.log(payload);
+      return {
+        ...state,
+        getByPrice: payload,
+      };
+    }
+
+    case "CLEAR": {
+      return {
+        ...state,
+        sortBy: "",
+        filterBy: "",
+        getByPrice: "",
+        FilterData: {
+          filterByCategories: [],
+          filterByBrands: [],
+        },
+      };
+    }
+
     default:
       return { ...state };
   }
