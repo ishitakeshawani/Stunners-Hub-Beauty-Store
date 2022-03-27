@@ -1,4 +1,4 @@
-import { Homepage, Navbar, Login, Signup } from "./Components";
+import { Homepage, Navbar, Login, Signup, Cart } from "./Components";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Products from "./Components/Products/Products";
@@ -13,6 +13,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
