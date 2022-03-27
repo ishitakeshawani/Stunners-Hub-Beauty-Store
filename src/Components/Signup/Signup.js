@@ -3,7 +3,8 @@ import "./signup.css";
 import "../Login/login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useProduct } from "../../contexts/ProductProvider";
+import { useCart } from "../../contexts/CartProvider/CartProvider";
+import { useProduct } from "../../contexts/ProductProvider/ProductProvider";
 
 export function Signup() {
   const [userData, setUserData] = useState({
@@ -14,6 +15,8 @@ export function Signup() {
     lastName: "",
   });
   const { setUser } = useProduct();
+  const { dispatch } = useCart();
+
   const onHandleSubmit = async () => {
     console.log(userData);
     try {
@@ -21,17 +24,20 @@ export function Signup() {
       console.log(value.data.encodedToken);
       setUser(value.data.createdUser);
       localStorage.setItem("token", value.data.encodedToken);
+      dispatch({
+        type: "INITIALIZE_CART",
+        payload: value.data.createdUser.cart,
+      });
+      setUserData({
+        email: "",
+        password: "",
+        confirmPassword: "",
+        firstName: "",
+        lastName: "",
+      });
     } catch (e) {
       console.log("error", e);
     }
-
-    setUserData({
-      email: "",
-      password: "",
-      confirmPassword: "",
-      firstName: "",
-      lastName: "",
-    });
   };
 
   return (
