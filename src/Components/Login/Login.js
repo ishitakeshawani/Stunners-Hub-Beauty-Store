@@ -2,7 +2,8 @@ import { React, useState } from "react";
 import "./login.css";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
-import { useProduct } from "../../contexts/ProductProvider";
+import { useCart } from "../../contexts/CartProvider/CartProvider";
+import { useProduct } from "../../contexts/ProductProvider/ProductProvider";
 
 export function Login() {
   const [userData, setUserData] = useState({
@@ -10,6 +11,7 @@ export function Login() {
     password: "",
   });
   const { setUser } = useProduct();
+  const { dispatch } = useCart();
 
   const onSubmitHandler = async () => {
     try {
@@ -17,6 +19,10 @@ export function Login() {
       setUser(value.data.foundUser);
       console.log(value.data);
       localStorage.setItem("token", value.data.encodedToken);
+      dispatch({
+        type: "INITIALIZE_CART",
+        payload: value.data.foundUser.cart,
+      });
       setUserData({
         email: "",
         password: "",
