@@ -12,6 +12,7 @@ export const products = [
     price: "275",
     categoryName: "Makeup",
     rate: 4,
+    discount: "5",
     image:
       "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/9/a/9a6872bNYNYKBC001512_1.jpg",
   },
@@ -21,6 +22,7 @@ export const products = [
     price: "234",
     categoryName: "Makeup",
     rate: 3,
+    discount: "10",
     image:
       "https://images-static.nykaa.com/media/catalog/product/3/3/33ef0c5NYKAC00000132_0.jpg",
   },
@@ -30,6 +32,7 @@ export const products = [
     price: "507",
     categoryName: "Makeup",
     rate: 4,
+    discount: "5",
     image:
       "https://images-static.nykaa.com/media/catalog/product/6/6/66e3c566902395646860_new_1.jpg",
   },
@@ -39,6 +42,7 @@ export const products = [
     price: "700",
     categoryName: "Makeup",
     rate: 4,
+    discount: "8",
     image:
       "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/2/2/22680_s1-8901030366734m.jpg",
   },
@@ -48,6 +52,7 @@ export const products = [
     price: "499",
     categoryName: "Makeup",
     rate: 4,
+    discount: "3",
     image:
       "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/9/8904245704209_1_3.jpg",
   },
@@ -57,6 +62,7 @@ export const products = [
     price: "468",
     categoryName: "Makeup",
     rate: 4,
+    discount: "15",
     image:
       "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/0/3/0380cf5kay_mtalp_1.jpg",
   },
@@ -66,6 +72,7 @@ export const products = [
     price: "180",
     categoryName: "Makeup",
     rate: 4,
+    discount: "3",
     image:
       "https://images-static.nykaa.com/media/catalog/product/d/a/dad5c788904330901278_1.jpg",
   },
@@ -75,6 +82,7 @@ export const products = [
     price: "132",
     categoryName: "Makeup",
     rate: 3,
+    discount: "5",
     image:
       "https://images-static.nykaa.com/media/catalog/product/1/d/1d0bf218901030715938_1.jpg",
   },
@@ -84,6 +92,7 @@ export const products = [
     price: "915",
     categoryName: "Skincare",
     rate: 4,
+    discount: "10",
     image:
       "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/f/a/fab9509nymcfcom00030_1.jpg",
   },
@@ -93,6 +102,7 @@ export const products = [
     price: "617",
     categoryName: "Skincare",
     rate: 3,
+    discount: "20",
     image:
       "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/6/8/68f3dc127280+27282_1.jpg",
   },
@@ -102,6 +112,7 @@ export const products = [
     price: "220",
     categoryName: "Skincare",
     rate: 4,
+    discount: "3",
     image:
       "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/b/4/b4515ae8904256002479new.jpg",
   },
@@ -111,7 +122,9 @@ export const products = [
     price: "180",
     categoryName: "Skincare",
     rate: 3,
-    image:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/3/5/35979108904027305815_1.jpg"
+    discount: "10",
+    image:
+      "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/3/5/35979108904027305815_1.jpg",
   },
   {
     _id: uuid(),
@@ -119,7 +132,9 @@ export const products = [
     price: "695",
     categoryName: "Haircare",
     rate: 2,
-    image:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/0/9/0938a71nyloprof00002_0.jpg"
+    discount: "20",
+    image:
+      "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/0/9/0938a71nyloprof00002_0.jpg",
   },
   {
     _id: uuid(),
@@ -127,7 +142,9 @@ export const products = [
     price: "100",
     categoryName: "Haircare",
     rate: 4,
-    image:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/9/4991c9c8901088062374_1.jpg"
+    discount: "1",
+    image:
+      "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/4/9/4991c9c8901088062374_1.jpg",
   },
   {
     _id: uuid(),
@@ -135,7 +152,9 @@ export const products = [
     price: "800",
     categoryName: "Fragrances",
     rate: 4,
-    image:"https://images-static.nykaa.com/media/catalog/product/1/3/1359e368904245710668_1.jpg"
+    discount: "5",
+    image:
+      "https://images-static.nykaa.com/media/catalog/product/1/3/1359e368904245710668_1.jpg",
   },
   {
     _id: uuid(),
@@ -143,7 +162,9 @@ export const products = [
     price: "1000",
     categoryName: "Fragrances",
     rate: 4,
-    image:"https://images-static.nykaa.com/media/catalog/product/g/0/g013652.jpg"
+    discount: "10",
+    image:
+      "https://images-static.nykaa.com/media/catalog/product/g/0/g013652.jpg",
   },
   {
     _id: uuid(),
@@ -151,15 +172,18 @@ export const products = [
     price: "200",
     categoryName: "Fragrances",
     rate: 3,
-    image:"https://images-static.nykaa.com/media/catalog/product/7/f/7f6ea964005900243249_1a.jpg"
+    discount: "4",
+    image:
+      "https://images-static.nykaa.com/media/catalog/product/7/f/7f6ea964005900243249_1a.jpg",
   },
   {
     _id: uuid(),
     name: "Nykaa Wanderlust Deodorant Spray - Mediterranean Sea Salt",
     price: "400",
     categoryName: "Fragrances",
+    discount: "10",
     rate: 1,
-    image:"https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/9/8904245713867_1_1_1.jpg"
+    image:
+      "https://images-static.nykaa.com/media/catalog/product/tr:w-200,h-200,cm-pad_resize/8/9/8904245713867_1_1_1.jpg",
   },
-
 ];
