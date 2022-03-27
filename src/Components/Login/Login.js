@@ -2,7 +2,8 @@ import { React, useState } from "react";
 import "./login.css";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
-import { useProduct } from "../../contexts/ProductProvider";
+import { useCart } from "../../contexts/CartProvider/CartProvider";
+import { useProduct } from "../../contexts/ProductProvider/ProductProvider";
 
 export function Login() {
   const [userData, setUserData] = useState({
