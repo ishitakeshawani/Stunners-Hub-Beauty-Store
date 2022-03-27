@@ -2,10 +2,12 @@ import { React, useState } from "react";
 import "./navbar.css";
 import logo from "../../assets/Images/Stunners.png";
 import { Link } from "react-router-dom";
+import { useCart } from "../../contexts/CartProvider/CartProvider";
 
 export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);
   const [IsItemActive,setIsItemActive] = useState(false);
+  const {cartState} = useCart();
 
   const showMenu = () => {
     setIsMenuShow(true);
@@ -61,15 +63,15 @@ export function Navbar() {
           </i>
           <span class="small-fontsize">Wishlist</span>
         </a>
-        <a
-          href="/pages/cart/cart.html"
+        <Link
+         to="/cart"
           class="link-no-style nav-link nav-icon-link"
         >
           <i class="fas fa-cart-shopping hide-icon">
-            <span class="number-badge">0</span>
+            <span class="number-badge">{cartState.cartProductList.length}</span>
           </i>
           <span class="small-fontsize">Cart</span>
-        </a>
+        </Link>
 
         <div class="closeMenu">
           <i class="fa fa-times" onClick={closeMenu}></i>
