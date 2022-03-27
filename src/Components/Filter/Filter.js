@@ -1,7 +1,7 @@
 import React from "react";
 import { categories } from "../../backend/db/categories";
 import { products } from "../../backend/db/products";
-import { useProduct } from "../../contexts/ProductProvider";
+import { useProduct } from "../../contexts/ProductProvider/ProductProvider";
 
 export const getSortedData = (state, productList) => {
   if (state.sortBy === "PRICE_HIGH_TO_LOW") {
