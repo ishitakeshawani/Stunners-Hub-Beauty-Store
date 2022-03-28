@@ -1,11 +1,7 @@
-import { act } from "@testing-library/react";
-import axios from "axios";
 import {
   React,
-  useContext,
   createContext,
   useReducer,
-  useState,
   useEffect,
 } from "react";
 import { addFilters } from "./addFilters";
@@ -13,6 +9,9 @@ import { addFilters } from "./addFilters";
 const productContext = createContext();
 
 function ProductProvider({ children }) {
+  const [user,setUser] = useState();
+ 
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch("/api/products");
@@ -46,7 +45,7 @@ function ProductProvider({ children }) {
   const [state, productDispatch] = useReducer(addFilters, initialState);
 
   return (
-    <productContext.Provider value={{ state, productDispatch }}>
+    <productContext.Provider value={{ state, productDispatch, user, setUser }}>
       {children}
     </productContext.Provider>
   );
