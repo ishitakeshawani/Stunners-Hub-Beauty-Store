@@ -2,6 +2,8 @@ export const addFilters = (state, { type, payload }) => {
   switch (type) {
     case "CALL_API":
       return { ...state, productList: payload };
+    case "SET_CATEGORY":
+      return { ...state, categoryData: payload };
     case "SORT": {
       if (payload === "PRICE_HIGH_TO_LOW") {
         console.log("1star", state);
@@ -61,7 +63,6 @@ export const addFilters = (state, { type, payload }) => {
     }
 
     case "FILTER_BY_PRICE": {
-      console.log(payload);
       return {
         ...state,
         getByPrice: payload,
