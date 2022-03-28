@@ -138,6 +138,7 @@ body {
 .filter-input {
   width: 1rem;
   height: 1rem;
+  margin-right: 0.8rem;
 }
 
 .cat-img {
@@ -203,7 +204,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 48rem) {
+@media only screen and (max-width: 48em) {
   .wrapper {
     overflow-x: hidden;
   }
