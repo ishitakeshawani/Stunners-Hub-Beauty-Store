@@ -1,9 +1,11 @@
 import { React, useState } from "react";
 import "./navbar.css";
 import logo from "../../assets/Images/Stunners.png";
+import { Link } from "react-router-dom";
 
 export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);
+  const [IsItemActive,setIsItemActive] = useState(false);
 
   const showMenu = () => {
     setIsMenuShow(true);
@@ -11,25 +13,28 @@ export function Navbar() {
   const closeMenu = () => {
     setIsMenuShow(false);
   };
+  const activeItem = () =>{
+    setIsItemActive(true);
+  }
 
   return (
     <nav class="navbar semibold-font-weight">
       <div class="openMenu">
         <i class="fa fa-bars" onClick={showMenu}></i>
       </div>
-      <a class="nav-icon-link nav-link link-no-style hide-icon" href="/">
+      <Link class="nav-icon-link nav-link link-no-style hide-icon" to="/">
         <img class="logoimage" src={logo} alt="logo" />
         <span class="small-fontsize">Stunners Hub</span>
-      </a>
-      <a class="nav-link link-no-style active nav-home" href="/">
+      </Link>
+      <Link class="nav-link link-no-style nav-home" to="/">
         Home
-      </a>
-      <a
+      </Link>
+      <Link
         class="nav-link link-no-style nav-products"
-        href="/pages/products/products.html"
+        to="/products"
       >
         Products
-      </a>
+      </Link>
 
       <div class={isMenuShow ? "mainMenuShow" : "mainMenu"}>
         <div class="searchbar">

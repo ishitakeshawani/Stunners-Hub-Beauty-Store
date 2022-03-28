@@ -1,11 +1,12 @@
 import { React,useEffect,useState } from "react";
-import { Footer, Navbar} from "../../Components";
+import { Footer } from "../../Components";
 import { topbrandslist } from "../../backend/db/topbrands";
 import firstcollection from "../../assets/Images/collection1.jfif";
 import secondcollection from "../../assets/Images/collection2.jfif";
+import { Link } from "react-router-dom";
 import "./homepage.css";
 
-export default function Homepage() {
+export function Homepage() {
 
   const [categorylist,setCategoryList] = useState([]);
   
@@ -20,10 +21,9 @@ export default function Homepage() {
 
   return (
     <div>
-      <Navbar />
-
+     
       <div className="banner">
-        <button className="btn image-btn">Shop Now</button>
+       <Link to="/products"><button className="btn image-btn">Shop Now</button></Link>
       </div>
 
       <div className="categories">
