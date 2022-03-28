@@ -19,7 +19,16 @@ function ProductProvider({ children }) {
     const fetchData = async () => {
       const data = await fetch("/api/products");
       const jsonData = await data.json();
-      dispatch({ type: "CALL_API", payload: jsonData.products });
+      productDispatch({ type: "CALL_API", payload: jsonData.products });
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch("/api/categories");
+      const jsonData = await data.json();
+      productDispatch({ type: "SET_CATEGORY", payload: jsonData.categories });
     };
     fetchData();
   }, []);
@@ -29,6 +38,7 @@ function ProductProvider({ children }) {
     productList: [],
     sortBy: "",
     filterBy: "",
+    categoryData: [],
     getByPrice: "",
     FilterData: {
       filterByCategories: [],
@@ -36,10 +46,10 @@ function ProductProvider({ children }) {
     },
   };
 
-  const [state, dispatch] = useReducer(addFilters, initialState);
+  const [state, productDispatch] = useReducer(addFilters, initialState);
 
   return (
-    <productContext.Provider value={{ state, dispatch, user, setUser }}>
+    <productContext.Provider value={{ state, productDispatch, user, setUser }}>
       {children}
     </productContext.Provider>
   );
