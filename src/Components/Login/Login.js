@@ -1,9 +1,8 @@
 import { React, useState } from "react";
 import "./login.css";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { useCart } from "../../contexts/CartProvider/CartProvider";
-import { useProduct } from "../../contexts/ProductProvider/ProductProvider";
+import { useCart, useProduct } from "../../contexts";
 
 export function Login() {
   const [userData, setUserData] = useState({
