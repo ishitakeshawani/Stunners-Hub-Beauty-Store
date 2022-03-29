@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const getSortedData = ({ sortBy }, productList) => {
   if (sortBy === "PRICE_HIGH_TO_LOW") {
     return [...productList].sort((a, b) => b.price - a.price);
@@ -42,3 +44,36 @@ export const getFilterByPrice = ({ getByPrice }, productList) => {
   data = data.filter((product) => product.price >= getByPrice);
   return data;
 };
+
+export const addProductToWishlist = async (product, productDispatch) => {
+  try {
+    const response = await axios.post( "/api/user/wishlist",
+    { product },
+    {
+      headers: { authorization: localStorage.getItem("token") },
+    });
+    console.log(response);
+    productDispatch({
+      type: "ADD_TO_WISHLIST",
+      payload: product
+    })
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+
+export const removeProductFromWishlist = async (productId, productDispatch) =>{
+  try {
+    const response = await axios.delete(`/api/user/wishlist/${productId}`,
+    {
+      headers: { authorization: localStorage.getItem("token") },
+    });
+    productDispatch({
+      type: "REMOVE_FROM_WISHLIST",
+      payload: productId
+    })
+  } catch (error) {
+    console.log(error);
+  }
+}

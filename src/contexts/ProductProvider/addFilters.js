@@ -83,6 +83,20 @@ export const addFilters = (state, { type, payload }) => {
       };
     }
 
+    case "ADD_TO_WISHLIST":
+      return {
+        ...state,
+        wishListData: [...state.wishListData, payload],
+      };
+
+    case "REMOVE_FROM_WISHLIST":
+      return {
+        ...state,
+        wishListData: state.wishListData.filter(
+          (product) => product._id !== payload
+        ),
+      };
+
     default:
       return { ...state };
   }
