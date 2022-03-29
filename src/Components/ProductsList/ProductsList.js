@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useCart, useProduct } from "../../contexts";
+import { useNavigate } from "react-router-dom";
 import "../Products/products.css";
 import {
   getSortedData,
@@ -16,6 +17,7 @@ export function ProductsList() {
   const filterData = getFilteredData(state, filterByPriceData);
   const filterByRateData = filterByRate(state, filterData);
   const sortedData = getSortedData(state, filterByRateData);
+  let navigate = useNavigate();
   function ProductInCart(productId) {
     return cartState.cartProductList.some(
       (product) => product._id === productId
@@ -42,10 +44,8 @@ export function ProductsList() {
                 className="btn card-btn"
                 onClick={() => {
                   ProductInCart(val._id)
-                    ? console.log("already in cart")
+                    ? navigate("/cart")
                     : addProductToCart(val, dispatch, cartState);
-                  console.log(ProductInCart(val._id));
-                  console.log(cartState.cartProductList);
                 }}
               >
                 {ProductInCart(val._id) ? "Go To Cart" : "Add to cart"}

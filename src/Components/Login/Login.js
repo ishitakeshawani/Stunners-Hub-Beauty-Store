@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useCart, useProduct } from "../../contexts";
 
@@ -9,6 +9,7 @@ export function Login() {
     email: "",
     password: "",
   });
+  let navigate = useNavigate();
   const { setUser } = useProduct();
   const { dispatch } = useCart();
 
@@ -26,8 +27,7 @@ export function Login() {
         email: "",
         password: "",
       });
-
-      //   Navigate("/");
+      navigate("/");
     } catch (e) {
       console.log(e);
     }

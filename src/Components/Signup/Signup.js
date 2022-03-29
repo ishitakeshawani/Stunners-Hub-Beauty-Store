@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./signup.css";
 import "../Login/login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useCart, useProduct } from "../../contexts";
 
@@ -15,6 +15,7 @@ export function Signup() {
   });
   const { setUser } = useProduct();
   const { dispatch } = useCart();
+  let navigate = useNavigate();
 
   const onHandleSubmit = async () => {
     console.log(userData);
@@ -34,6 +35,7 @@ export function Signup() {
         firstName: "",
         lastName: "",
       });
+      navigate("/");
     } catch (e) {
       console.log("error", e);
     }
