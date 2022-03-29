@@ -8,16 +8,23 @@ import {
   filterByRate,
   getFilterByPrice,
 } from "../../utils";
-import { addProductToCart } from "../../utils/";
+import { addProductToCart, addProductToWishlist, removeProductFromWishlist } from "../../utils/";
 
 export function ProductsList() {
-  const { state } = useProduct();
+  const { state, productDispatch } = useProduct();
   const { cartState, dispatch } = useCart();
   const filterByPriceData = getFilterByPrice(state, state.productList);
   const filterData = getFilteredData(state, filterByPriceData);
   const filterByRateData = filterByRate(state, filterData);
   const sortedData = getSortedData(state, filterByRateData);
   let navigate = useNavigate();
+  function ProductInWishlist(productId) {
+    return (
+      state.wishListData.length > 0 &&
+      state.wishListData.some((product) => product._id === productId)
+    );
+  }
+  console.log(state.wishListData, "ws", ProductInWishlist());
   function ProductInCart(productId) {
     return cartState.cartProductList.some(
       (product) => product._id === productId
@@ -39,7 +46,18 @@ export function ProductsList() {
               <Rate rate={val.rate} />
             </div>
             <div className="product-card-footer pink-color">
-              <i className="card-footer-icon fa-regular fa-heart"></i>
+              <i
+                className={`card-footer-icon ${
+                  ProductInWishlist(val._id)
+                    ? "fas fa-heart"
+                    : "fa-regular fa-heart"
+                }`}
+                onClick={() =>
+                  ProductInWishlist(val._id)
+                    ? removeProductFromWishlist(val._id, productDispatch)
+                    : addProductToWishlist(val, productDispatch)
+                }
+              ></i>
               <button
                 className="btn card-btn"
                 onClick={() => {

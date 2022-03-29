@@ -38,6 +38,7 @@ function ProductProvider({ children }) {
     sortBy: "",
     filterBy: "",
     categoryData: [],
+    wishListData: [],
     getByPrice: "",
     FilterData: {
       filterByCategories: [],
