@@ -6,9 +6,8 @@ import {
   getFilteredData,
   filterByRate,
   getFilterByPrice,
-} from "../Filter/Filter";
-import { addProductToCart } from "../../utils/cartUtils";
-
+} from "../../utils";
+import { addProductToCart } from "../../utils/";
 
 export function ProductsList() {
   const { state } = useProduct();
@@ -18,7 +17,6 @@ export function ProductsList() {
   const filterByRateData = filterByRate(state, filterData);
   const sortedData = getSortedData(state, filterByRateData);
   function ProductInCart(productId) {
-    // console.log(cartState);
     return cartState.cartProductList.some(
       (product) => product._id === productId
     );
@@ -33,7 +31,8 @@ export function ProductsList() {
               <img className="product-img" src={val.image} alt="" />
               <div className="product-card-title">{val.name}</div>
               <div className="card-mrp">
-                <span className="gray-color">MRP:</span> ₹{val.price}<span className="product-discount">{val.discount}% off</span>
+                <span className="gray-color">MRP:</span> ₹{val.price}
+                <span className="product-discount">{val.discount}% off</span>
               </div>
               <Rate rate={val.rate} />
             </div>
@@ -44,9 +43,9 @@ export function ProductsList() {
                 onClick={() => {
                   ProductInCart(val._id)
                     ? console.log("already in cart")
-                    : addProductToCart(val,dispatch,cartState);
-                    console.log( ProductInCart(val._id))
-                    console.log(cartState.cartProductList);
+                    : addProductToCart(val, dispatch, cartState);
+                  console.log(ProductInCart(val._id));
+                  console.log(cartState.cartProductList);
                 }}
               >
                 {ProductInCart(val._id) ? "Go To Cart" : "Add to cart"}
