@@ -154,96 +154,14 @@ body {
   color: var(--pink-color);
 }
 
-.address {
-  padding: 0.6rem;
-  background-color: var(--white);
-  margin: 0 0 1rem 0;
-  width: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem;
-}
-
-.address-title {
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.detail-address {
-  font-size: 1rem;
-}
-
-.click-btn {
-  margin-left: auto;
-  padding: 0.1rem 0.7rem;
-  color: var(--pink-color);
-  border-color: var(--pink-color);
-  background: var(--white);
-}
-
-.click-btn:hover {
-  background: var(--pink-color);
-  color: var(--white);
-}
-
-.address-sec {
-  width: 70%;
-}
-
-.modal {
-  display: none;
-  overflow: hidden;
-}
-
-.modal-content {
-  background-color: var(--product-bgcolor);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 40%;
-  height: auto;
-  border-radius: 5px;
-}
-
-.input {
-  width: 20rem;
-  margin: 0.5rem 0;
-}
-
-.input-address {
-  height: 7rem;
-  width: 20rem;
-}
-
-.name-label {
-  font-size: 1.1rem;
-  color: var(--bg-color);
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.cancel-btn {
-  background-color: var(--product-bgcolor);
-  color: var(--bg-color);
-  border-radius: 5px;
-  border: 1px solid var(--bg-color);
-}
-
-.save-btn {
-  background-color: var(--pink-color);
-  border-radius: 5px;
-}
-
-.cart-image{
+.cart-image {
   width: 18rem;
   height: 17rem;
   object-fit: cover;
 }
 
 @media only screen and (max-width: 48em) {
-  .cart-page{
+  .cart-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -262,30 +180,7 @@ body {
   .hide-icon {
     display: none;
   }
-  .modal-content {
-    width: 70%;
-  }
-  .input {
-    width: 10rem;
-    height: 1rem;
-  }
-  .input-address {
-    width: 10rem;
-    height: 5rem;
-  }
-  .name-label {
-    font-size: 13px;
-  }
-  .btn {
-    padding: 6px 10px;
-  }
-  .modal {
-    display: none;
-    overflow: hidden;
-  }
-  .address {
-    width: 90%;
-  }
+
   .cart-product-card {
     width: 16rem;
   }
@@ -293,19 +188,21 @@ body {
     width: 15rem;
     row-gap: 10px;
   }
-  .cart-image{
+  .cart-image {
     width: 10rem;
     height: 10rem;
-
   }
-  .cart-product-img{
+  .cart-product-img {
     padding: 1rem;
   }
   .cart-product-name {
     word-wrap: break-word;
     font-size: 1rem;
   }
-  .product-quantity{
+  .product-quantity {
     font-size: 14px;
+  }
+  .btn {
+    padding: 6px 10px;
   }
 }
