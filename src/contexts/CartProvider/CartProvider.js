@@ -17,7 +17,6 @@ function CartProvider({ children }) {
   );
   const totalAmount = (totalPrice - totalDiscount).toFixed(2);
   const totalSave = (totalPrice - totalAmount).toFixed(2);
-  console.log(TotalProductDiscount(cartState.cartProductList, totalPrice));
   return (
     <cartContext.Provider
       value={{
