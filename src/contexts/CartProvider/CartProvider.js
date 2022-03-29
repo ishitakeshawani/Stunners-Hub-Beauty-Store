@@ -1,6 +1,6 @@
 import { React, useContext, createContext, useState, useReducer } from "react";
 import { cartReducer } from "./cartReducer";
-import { TotalCartPrice, TotalProductDiscount } from "../../utils/cartUtils";
+import { TotalCartPrice, TotalProductDiscount } from "../../utils";
 const cartContext = createContext();
 
 function CartProvider({ children }) {
