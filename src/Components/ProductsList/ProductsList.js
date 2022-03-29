@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { useProduct } from "../../contexts/ProductProvider/ProductProvider";
-import { useCart } from "../../contexts/CartProvider/CartProvider";
+import { useCart, useProduct } from "../../contexts";
 import "../Products/products.css";
 import {
   getSortedData,
@@ -9,7 +8,7 @@ import {
   getFilterByPrice,
 } from "../Filter/Filter";
 import { addProductToCart } from "../../utils/cartUtils";
-import { Navigate } from "react-router-dom";
+
 
 export function ProductsList() {
   const { state } = useProduct();
