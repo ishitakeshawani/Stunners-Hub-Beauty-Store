@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import "./navbar.css";
 import logo from "../../assets/Images/Stunners.png";
 import { Link } from "react-router-dom";
-import { useCart } from "../../contexts/CartProvider/CartProvider";
+import { useCart } from "../../contexts";
 
 export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);

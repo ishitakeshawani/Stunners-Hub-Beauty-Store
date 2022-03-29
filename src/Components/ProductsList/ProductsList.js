@@ -44,8 +44,6 @@ export function ProductsList() {
                   ProductInCart(val._id)
                     ? console.log("already in cart")
                     : addProductToCart(val, dispatch, cartState);
-                  console.log(ProductInCart(val._id));
-                  console.log(cartState.cartProductList);
                 }}
               >
                 {ProductInCart(val._id) ? "Go To Cart" : "Add to cart"}

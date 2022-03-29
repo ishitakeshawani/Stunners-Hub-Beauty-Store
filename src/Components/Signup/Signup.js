@@ -17,10 +17,9 @@ export function Signup() {
   const { dispatch } = useCart();
 
   const onHandleSubmit = async () => {
-    console.log(userData);
     try {
       const value = await axios.post("/api/auth/signup", userData);
-      console.log(value.data.encodedToken);
+
       setUser(value.data.createdUser);
       localStorage.setItem("token", value.data.encodedToken);
       dispatch({

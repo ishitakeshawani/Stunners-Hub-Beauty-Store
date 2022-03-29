@@ -242,7 +242,7 @@ body {
   object-fit: cover;
 }
 
-@media only screen and (max-width: 48rem) {
+@media only screen and (max-width: 48em) {
   .cart-page{
     display: flex;
     flex-direction: column;

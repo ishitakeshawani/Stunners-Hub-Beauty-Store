@@ -202,23 +202,23 @@ body {
   }
   .product-card-title{
     margin: 1rem 0;
-    font-size: 15px;
+    font-size: 0.98rem;
   }
   .card-mrp{
-    font-size: 14px;
+    font-size: 0.79rem;
   }
   .card {
-    width: 12rem;
+    width: 0.79rem;
     height: fit-content;
   }
   .product-page {
     margin: 1rem;
   }
   .card-padding {
-    padding: 12px 12px 0 12px;
+    padding: 0.79rem 0.79rem 0 0.79rem;
   }
   .small-fontsize {
-    font-size: 12px;
+    font-size: 0.79rem;
   }
 }
 
@@ -253,7 +253,7 @@ body {
     margin: 1.5rem;
   }
   .small-fontsize {
-    font-size: 14px;
+    font-size: 0.9rem;
   }
 }
 
@@ -285,7 +285,7 @@ body {
     display: none;
   }
   .small-fontsize {
-    font-size: 12px;
+    font-size: 0.78rem;
   }
 }
 
@@ -318,6 +318,6 @@ body {
     display: none;
   }
   .small-fontsize {
-    font-size: 12px;
+    font-size: 0.79rem;
   }
 }

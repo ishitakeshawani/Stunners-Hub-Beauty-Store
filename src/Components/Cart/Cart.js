@@ -5,7 +5,6 @@ import { RemoveProductFromCart, handleQuantity } from "../../utils/cartUtils";
 
 export function Cart() {
   const { cartState, dispatch, totalPrice, totalDiscount, totalAmount, totalSave  } = useCart();
-  console.log(cartState.cartProductList);
   return (
     <div class="cart-page">
       {cartState.cartProductList.length > 0 ? (
