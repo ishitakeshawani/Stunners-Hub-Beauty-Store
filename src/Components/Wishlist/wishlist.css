@@ -1,0 +1,38 @@
+.wishlist {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem;
+}
+
+@media only screen and (max-width: 48rem) {
+  .wishlist {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+  .card {
+    width: 15rem;
+  }
+  .card-padding {
+    padding: 10px 10px 0 10px;
+  }
+  .hide-icon {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 30rem) {
+  .wishlist {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1rem;
+  }
+  .card {
+    width: 17rem;
+  }
+  .hide-icon {
+    display: none;
+  }
+}
