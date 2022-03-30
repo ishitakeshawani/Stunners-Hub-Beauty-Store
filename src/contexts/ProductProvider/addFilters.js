@@ -63,6 +63,7 @@ export const addFilters = (state, { type, payload }) => {
     }
 
     case "FILTER_BY_PRICE": {
+      console.log(payload);
       return {
         ...state,
         getByPrice: payload,
