@@ -54,15 +54,15 @@ export function Navbar() {
           <i class="fas fa-user hide-icon"></i>
           <span class="small-fontsize">Login</span>
         </Link>
-        <a
-          href="/pages/wishlist/wishlist.html"
+        <Link
+          to="/wishlist"
           class="link-no-style nav-link nav-icon-link"
         >
           <i class="fas fa-heart hide-icon">
             <span class="number-badge">0</span>
           </i>
           <span class="small-fontsize">Wishlist</span>
-        </a>
+        </Link>
         <Link
          to="/cart"
           class="link-no-style nav-link nav-icon-link"

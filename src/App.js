@@ -1,7 +1,8 @@
-import { Homepage, Navbar, Login, Signup, Cart } from "./Components";
+import { Homepage, Navbar, Login, Signup, Cart, Wishlist } from "./Components";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Products from "./Components/Products/Products";
+
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
     </div>
   );
