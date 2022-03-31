@@ -24,7 +24,7 @@ export function ProductsList() {
       state.wishListData.some((product) => product._id === productId)
     );
   }
-  console.log(state.wishListData, "ws", ProductInWishlist());
+  
   function ProductInCart(productId) {
     return cartState.cartProductList.some(
       (product) => product._id === productId

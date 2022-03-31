@@ -52,7 +52,6 @@ export const addProductToWishlist = async (product, productDispatch) => {
     {
       headers: { authorization: localStorage.getItem("token") },
     });
-    console.log(response);
     productDispatch({
       type: "ADD_TO_WISHLIST",
       payload: product
