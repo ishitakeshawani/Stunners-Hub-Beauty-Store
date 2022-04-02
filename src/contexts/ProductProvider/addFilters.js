@@ -75,7 +75,7 @@ export const addFilters = (state, { type, payload }) => {
         ...state,
         sortBy: "",
         filterBy: "",
-        getByPrice: "",
+        getByPrice: "1000",
         FilterData: {
           filterByCategories: [],
           filterByBrands: [],

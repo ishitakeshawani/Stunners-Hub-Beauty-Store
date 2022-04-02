@@ -39,7 +39,7 @@ function ProductProvider({ children }) {
     filterBy: "",
     categoryData: [],
     wishListData: [],
-    getByPrice: "",
+    getByPrice: "1000",
     FilterData: {
       filterByCategories: [],
       filterByBrands: [],

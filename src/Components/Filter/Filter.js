@@ -31,6 +31,7 @@ export function Filter() {
           type="range"
           min="100"
           max="1000"
+          value={Number(state.getByPrice)}
           onChange={(e) => {
             productDispatch({
               type: "FILTER_BY_PRICE",

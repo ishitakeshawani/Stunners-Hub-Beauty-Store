@@ -41,7 +41,7 @@ export const getFilteredData = ({ FilterData }, productList) => {
 
 export const getFilterByPrice = ({ getByPrice }, productList) => {
   let data = productList;
-  data = data.filter((product) => product.price >= getByPrice);
+  data = data.filter((product) => Number(product.price) <= Number(getByPrice));
   return data;
 };
 
