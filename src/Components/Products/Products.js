@@ -1,5 +1,5 @@
 import React from 'react';
-import { Filter, ProductsList } from '../../Components';
+import { Filter, ProductsList } from 'Components';
 import "./products.css";
 
 

@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { useCart, useProduct } from "../../contexts";
+import { useCart, useProduct } from "contexts";
 import { useNavigate } from "react-router-dom";
 import "../Products/products.css";
 import {
@@ -7,8 +7,8 @@ import {
   getFilteredData,
   filterByRate,
   getFilterByPrice,
-} from "../../utils";
-import { addProductToCart, addProductToWishlist, removeProductFromWishlist } from "../../utils/";
+} from "utils";
+import { addProductToCart, addProductToWishlist, removeProductFromWishlist } from "utils/";
 
 export function ProductsList() {
   const { state, productDispatch } = useProduct();

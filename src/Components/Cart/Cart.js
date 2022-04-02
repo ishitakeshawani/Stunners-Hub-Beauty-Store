@@ -1,11 +1,11 @@
 import React from "react";
-import { useCart } from "../../contexts/CartProvider/CartProvider";
+import { useCart } from "contexts";
 import "./cart.css";
-import { RemoveProductFromCart, handleQuantity } from "../../utils/cartUtils";
-import { useProduct } from "../../contexts";
+import { RemoveProductFromCart, handleQuantity } from "utils";
+import { useProduct } from "contexts";
 import { useNavigate } from "react-router-dom";
-import { addProductToWishlist } from "../../utils";
-import { Address } from "../../Components";
+import { addProductToWishlist } from "utils";
+import { Address } from "Components";
 
 export function Cart() {
   const {

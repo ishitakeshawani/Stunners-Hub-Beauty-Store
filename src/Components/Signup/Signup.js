@@ -3,7 +3,7 @@ import "./signup.css";
 import "../Login/login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useCart, useProduct } from "../../contexts";
+import { useCart, useProduct } from "contexts";
 
 export function Signup() {
   const [userData, setUserData] = useState({

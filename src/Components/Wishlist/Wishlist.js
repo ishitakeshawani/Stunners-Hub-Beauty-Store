@@ -1,6 +1,6 @@
 import React from 'react';
-import { useProduct, useCart } from '../../contexts';
-import { addProductToCart, removeProductFromWishlist } from '../../utils';
+import { useProduct, useCart } from 'contexts';
+import { addProductToCart, removeProductFromWishlist } from 'utils';
 import { useNavigate } from 'react-router-dom';
 import "./wishlist.css";
 

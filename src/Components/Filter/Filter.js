@@ -1,5 +1,5 @@
 import React from "react";
-import { useProduct } from "../../contexts";
+import { useProduct } from "contexts";
 
 export function Filter() {
   const { state, productDispatch } = useProduct();

@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import "./navbar.css";
-import logo from "../../assets/Images/Stunners.png";
+import logo from "assets/Images/Stunners.png";
 import { Link } from "react-router-dom";
-import { useProduct, useCart } from "../../contexts";
+import { useProduct, useCart } from "contexts";
 
 export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);
