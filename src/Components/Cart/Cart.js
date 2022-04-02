@@ -1,11 +1,26 @@
 import React from "react";
-import { useCart } from "../../contexts/CartProvider/CartProvider";
+import { useCart } from "contexts";
 import "./cart.css";
-import { RemoveProductFromCart, handleQuantity } from "../../utils/cartUtils";
-import { Address } from "../Address/Address";
+import { RemoveProductFromCart, handleQuantity } from "utils";
+import { useProduct } from "contexts";
+import { useNavigate } from "react-router-dom";
+import { addProductToWishlist } from "utils";
+import { Address } from "Components";
 
 export function Cart() {
-  const { cartState, dispatch, totalPrice, totalDiscount, totalAmount, totalSave  } = useCart();
+  const {
+    cartState,
+    dispatch,
+    totalPrice,
+    totalDiscount,
+    totalAmount,
+    totalSave,
+  } = useCart();
+  const { state, productDispatch } = useProduct();
+  let navigate = useNavigate();
+  function ProductInWishlist(productId) {
+    return state.wishListData.some((product) => product._id === productId);
+  }
   return (
     <div class="cart-page">
       {cartState.cartProductList.length > 0 ? (
@@ -13,7 +28,6 @@ export function Cart() {
           <div class="cart-page-title semibold-font-weight">My Cart</div>
           <Address />
           <div class="cart-page-item">
-            
             <div>
               {cartState.cartProductList.map((product) => (
                 <div class="cart-product-card">
@@ -30,7 +44,9 @@ export function Cart() {
                     </div>
                     <div class="cart-product-price bold-font-weight">
                       ₹{product.price}
-                    <span class="cart-product-off">{product.discount}% off</span>
+                      <span class="cart-product-off">
+                        {product.discount}% off
+                      </span>
                     </div>
                     <div class="product-quantity flex">
                       <div class="product-quantity-label">Quantity :</div>
@@ -60,12 +76,21 @@ export function Cart() {
                     >
                       Remove from cart
                     </button>
-                    <button class="btn cart-wishlist-btn">
-                      Add to Wishlist
+                    <button
+                      class="btn cart-wishlist-btn"
+                      onClick={() => {
+                        ProductInWishlist(product._id)
+                          ? navigate("/wishlist")
+                          : addProductToWishlist(product, productDispatch);
+                      }}
+                    >
+                      {ProductInWishlist(product._id)
+                        ? "Go to wishlist"
+                        : "Add to wishlist"}
                     </button>
                   </div>
-                </div>)
-              )}
+                </div>
+              ))}
             </div>
             <div class="price-details-card">
               <div class="price-details-title bold-font-weight">
@@ -103,3 +128,4 @@ export function Cart() {
     </div>
   );
 }
+

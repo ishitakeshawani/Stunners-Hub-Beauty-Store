@@ -1,13 +1,14 @@
 import { React, useState } from "react";
 import "./navbar.css";
-import logo from "../../assets/Images/Stunners.png";
+import logo from "assets/Images/Stunners.png";
 import { Link } from "react-router-dom";
-import { useCart } from "../../contexts";
+import { useProduct, useCart } from "contexts";
 
 export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);
   const [IsItemActive,setIsItemActive] = useState(false);
   const {cartState} = useCart();
+  const {state} = useProduct();
 
   const showMenu = () => {
     setIsMenuShow(true);
@@ -20,61 +21,61 @@ export function Navbar() {
   }
 
   return (
-    <nav class="navbar semibold-font-weight">
-      <div class="openMenu">
-        <i class="fa fa-bars" onClick={showMenu}></i>
+    <nav className="navbar semibold-font-weight">
+      <div className="openMenu">
+        <i className="fa fa-bars" onClick={showMenu}></i>
       </div>
-      <Link class="nav-icon-link nav-link link-no-style hide-icon" to="/">
-        <img class="logoimage" src={logo} alt="logo" />
-        <span class="small-fontsize">Stunners Hub</span>
+      <Link className="nav-icon-link nav-link link-no-style hide-icon" to="/">
+        <img className="logoimage" src={logo} alt="logo" />
+        <span className="small-fontsize">Stunners Hub</span>
       </Link>
-      <Link class="nav-link link-no-style nav-home" to="/">
+      <Link className="nav-link link-no-style nav-home" to="/">
         Home
       </Link>
       <Link
-        class="nav-link link-no-style nav-products"
+        className="nav-link link-no-style nav-products"
         to="/products"
       >
         Products
       </Link>
 
-      <div class={isMenuShow ? "mainMenuShow" : "mainMenu"}>
-        <div class="searchbar">
-          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <div className={isMenuShow ? "mainMenuShow" : "mainMenu"}>
+        <div className="searchbar">
+          <i className="fa-solid fa-magnifying-glass search-icon"></i>
           <input
             type="text"
-            class="search-input"
+            className="search-input"
             placeholder="Search on Stunners Hub"
           />
         </div>
         <Link
           to="/login"
-          class="link-no-style nav-link nav-icon-link"
+          className="link-no-style nav-link nav-icon-link"
         >
-          <i class="fas fa-user hide-icon"></i>
-          <span class="small-fontsize">Login</span>
+          <i className="fas fa-user hide-icon"></i>
+          <span className="small-fontsize">Login</span>
         </Link>
-        <a
-          href="/pages/wishlist/wishlist.html"
-          class="link-no-style nav-link nav-icon-link"
+        <Link
+          to="/wishlist"
+          className="link-no-style nav-link nav-icon-link"
         >
-          <i class="fas fa-heart hide-icon">
-            <span class="number-badge">0</span>
+          <i className="fas fa-heart hide-icon">
+            <span className="number-badge">{state.wishListData.length}</span>
           </i>
-          <span class="small-fontsize">Wishlist</span>
-        </a>
+          <span className="small-fontsize">Wishlist</span>
+        </Link>
         <Link
          to="/cart"
-          class="link-no-style nav-link nav-icon-link"
+          className="link-no-style nav-link nav-icon-link"
         >
-          <i class="fas fa-cart-shopping hide-icon">
-            <span class="number-badge">{cartState.cartProductList.length}</span>
+          <i className="fas fa-cart-shopping hide-icon">
+            <span className="number-badge">{cartState.cartProductList.length}</span>
           </i>
-          <span class="small-fontsize">Cart</span>
+          <span className="small-fontsize">Cart</span>
         </Link>
 
-        <div class="closeMenu">
-          <i class="fa fa-times" onClick={closeMenu}></i>
+        <div className="closeMenu">
+          <i className="fa fa-times" onClick={closeMenu}></i>
         </div>
       </div>
     </nav>

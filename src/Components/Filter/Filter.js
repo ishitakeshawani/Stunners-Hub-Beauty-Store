@@ -1,5 +1,5 @@
 import React from "react";
-import { useProduct } from "../../contexts";
+import { useProduct } from "contexts";
 
 export function Filter() {
   const { state, productDispatch } = useProduct();
@@ -31,6 +31,7 @@ export function Filter() {
           type="range"
           min="100"
           max="1000"
+          value={Number(state.getByPrice)}
           onChange={(e) => {
             productDispatch({
               type: "FILTER_BY_PRICE",

@@ -1,8 +1,8 @@
 import { React,useEffect,useState } from "react";
-import { Footer } from "../../Components";
-import { topbrandslist } from "../../backend/db/topbrands";
-import firstcollection from "../../assets/Images/collection1.jfif";
-import secondcollection from "../../assets/Images/collection2.jfif";
+import { Footer } from "Components";
+import { topbrandslist } from "backend/db/topbrands";
+import firstcollection from "assets/Images/collection1.jfif";
+import secondcollection from "assets/Images/collection2.jfif";
 import { Link } from "react-router-dom";
 import "./homepage.css";
 

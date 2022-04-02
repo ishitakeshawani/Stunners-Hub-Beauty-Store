@@ -75,13 +75,27 @@ export const addFilters = (state, { type, payload }) => {
         ...state,
         sortBy: "",
         filterBy: "",
-        getByPrice: "",
+        getByPrice: "1000",
         FilterData: {
           filterByCategories: [],
           filterByBrands: [],
         },
       };
     }
+
+    case "ADD_TO_WISHLIST":
+      return {
+        ...state,
+        wishListData: [...state.wishListData, payload],
+      };
+
+    case "REMOVE_FROM_WISHLIST":
+      return {
+        ...state,
+        wishListData: state.wishListData.filter(
+          (product) => product._id !== payload
+        ),
+      };
 
     default:
       return { ...state };
