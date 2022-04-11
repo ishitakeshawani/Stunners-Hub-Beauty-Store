@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { useCart, useProduct } from "contexts";
 import { useNavigate } from "react-router-dom";
 import "../Products/products.css";
+import { useAuth } from "contexts";
 import {
   getSortedData,
   getFilteredData,
@@ -13,6 +14,7 @@ import { addProductToCart, addProductToWishlist, removeProductFromWishlist } fro
 export function ProductsList() {
   const { state, productDispatch } = useProduct();
   const { cartState, dispatch } = useCart();
+  const { encodedToken } = useAuth();
   const filterByPriceData = getFilterByPrice(state, state.productList);
   const filterData = getFilteredData(state, filterByPriceData);
   const filterByRateData = filterByRate(state, filterData);
@@ -55,7 +57,7 @@ export function ProductsList() {
                 onClick={() =>
                   ProductInWishlist(val._id)
                     ? removeProductFromWishlist(val._id, productDispatch)
-                    : addProductToWishlist(val, productDispatch)
+                    : addProductToWishlist(val, productDispatch )
                 }
               ></i>
               <button
@@ -63,7 +65,7 @@ export function ProductsList() {
                 onClick={() => {
                   ProductInCart(val._id)
                     ? navigate("/cart")
-                    : addProductToCart(val, dispatch, cartState);
+                    : addProductToCart(val, dispatch, encodedToken);
                 }}
               >
                 {ProductInCart(val._id) ? "Go To Cart" : "Add to cart"}

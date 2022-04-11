@@ -13,7 +13,7 @@ export function Signup() {
     firstName: "",
     lastName: "",
   });
-  const { setUser } = useAuth();
+  const { setUser, setIsLoggedIn } = useAuth();
   const { dispatch } = useCart();
   let navigate = useNavigate();
 
@@ -23,6 +23,8 @@ export function Signup() {
       console.log(value.data.createdUser);
       setUser(value.data.createdUser);
       localStorage.setItem("token", value.data.encodedToken);
+      localStorage.setItem("user", JSON.stringify(userData))
+      setIsLoggedIn(true);
       dispatch({
         type: "INITIALIZE_CART",
         payload: value.data.createdUser.cart,

@@ -10,15 +10,15 @@ export function Login() {
     password: "",
   });
   let navigate = useNavigate();
-  const { setUser } = useAuth();
+  const { setUser, setIsLoggedIn } = useAuth();
   const { dispatch } = useCart();
 
   const onSubmitHandler = async () => {
     try {
       const value = await axios.post("/api/auth/login", userData);
       setUser(value.data.foundUser);
-      console.log(value.data);
       localStorage.setItem("token", value.data.encodedToken);
+      setIsLoggedIn(true);
       dispatch({
         type: "INITIALIZE_CART",
         payload: value.data.foundUser.cart,

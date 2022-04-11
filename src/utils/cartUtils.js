@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const addProductToCart = async (product, dispatch) => {
-  const encodedToken = localStorage.getItem("token");
+export const addProductToCart = async (product, dispatch, encodedToken) => {
   console.log(product);
+  console.log(encodedToken,"t")
   try {
     const response = await axios.post(
       "/api/user/cart",
@@ -85,9 +85,10 @@ export const TotalProductDiscount = (cartProductList, totalPrice) => {
     ? cartProductList.reduce(
         (total, product) =>
           total +
-         ( Number(product.price) *
+          (Number(product.price) *
             Number(product.quantity) *
-            (Number(product.quantity) * Number(product.discount)))/100,
+            (Number(product.quantity) * Number(product.discount))) /
+            100,
         0
       )
     : 0;
