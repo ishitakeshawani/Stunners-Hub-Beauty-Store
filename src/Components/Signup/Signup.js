@@ -3,7 +3,7 @@ import "./signup.css";
 import "../Login/login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useCart, useProduct } from "contexts";
+import { useAuth, useCart } from "contexts";
 
 export function Signup() {
   const [userData, setUserData] = useState({
@@ -13,14 +13,14 @@ export function Signup() {
     firstName: "",
     lastName: "",
   });
-  const { setUser } = useProduct();
+  const { setUser } = useAuth();
   const { dispatch } = useCart();
   let navigate = useNavigate();
 
   const onHandleSubmit = async () => {
     try {
       const value = await axios.post("/api/auth/signup", userData);
-
+      console.log(value.data.createdUser);
       setUser(value.data.createdUser);
       localStorage.setItem("token", value.data.encodedToken);
       dispatch({

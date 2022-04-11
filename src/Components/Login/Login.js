@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useCart, useProduct } from "contexts";
+import { useAuth, useCart } from "contexts";
 
 export function Login() {
   const [userData, setUserData] = useState({
@@ -10,7 +10,7 @@ export function Login() {
     password: "",
   });
   let navigate = useNavigate();
-  const { setUser } = useProduct();
+  const { setUser } = useAuth();
   const { dispatch } = useCart();
 
   const onSubmitHandler = async () => {
