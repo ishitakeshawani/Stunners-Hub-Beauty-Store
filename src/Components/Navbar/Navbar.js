@@ -9,7 +9,7 @@ export function Navbar() {
   const [IsItemActive, setIsItemActive] = useState(false);
   const { cartState } = useCart();
   const { state } = useProduct();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, logOut } = useAuth();
 
   const showMenu = () => {
     setIsMenuShow(true);
@@ -47,7 +47,10 @@ export function Navbar() {
           />
         </div>
         <Link
-          to={!isLoggedIn && "/login"}
+          to={!isLoggedIn ? "/login" : "/"}
+          onClick={() => {
+            isLoggedIn && logOut();
+          }}
           className="link-no-style nav-link nav-icon-link"
         >
           <i className="fas fa-user hide-icon"></i>
