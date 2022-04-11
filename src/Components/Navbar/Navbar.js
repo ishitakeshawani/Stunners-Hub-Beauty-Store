@@ -10,8 +10,6 @@ export function Navbar() {
   const { cartState } = useCart();
   const { state } = useProduct();
   const { isLoggedIn } = useAuth();
-  const location = useLocation();
-  console.log(location);
 
   const showMenu = () => {
     setIsMenuShow(true);

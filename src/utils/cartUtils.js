@@ -1,8 +1,6 @@
 import axios from "axios";
 
 export const addProductToCart = async (product, dispatch, encodedToken) => {
-  console.log(product);
-  console.log(encodedToken,"t")
   try {
     const response = await axios.post(
       "/api/user/cart",
@@ -13,12 +11,10 @@ export const addProductToCart = async (product, dispatch, encodedToken) => {
         },
       }
     );
-    console.log(response);
     dispatch({
       type: "ADD_TO_CART",
       payload: product,
     });
-    console.log(cartState.cartProductList);
   } catch (error) {
     console.log(error);
   }
