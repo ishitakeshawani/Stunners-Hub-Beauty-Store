@@ -5,6 +5,8 @@ import axios from "axios";
 import { useAuth, useCart } from "contexts";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import bcyrpt from "bcryptjs";
+import { users } from "backend/db/users";
 
 export function Login() {
   const [type, setType] = useState("password");
@@ -40,6 +42,30 @@ export function Login() {
       setPasswordError("");
     }
     return true;
+  };
+
+  const testLogin = async (e) => {
+    e.preventDefault();
+    setUserData((prev) => ({
+      email: "adarshbalika@gmail.com",
+      password: bcyrpt.hashSync("adarshBalika123", 5),
+    }));
+    const value = await axios.post("/api/auth/login", {
+      email: "adarshbalika@gmail.com",
+      password: "adarshBalika123",
+    });
+    setUser(value.data.foundUser);
+    localStorage.setItem("token", value.data.encodedToken);
+    setIsLoggedIn(true);
+    dispatch({
+      type: "INITIALIZE_CART",
+      payload: value.data.foundUser.cart,
+    });
+    setUserData({
+      email: "",
+      password: "",
+    });
+    navigate("/");
   };
 
   const onSubmitHandler = async (e) => {
@@ -126,6 +152,13 @@ export function Login() {
             onClick={(e) => onSubmitHandler(e)}
           >
             Login
+          </button>
+          <button
+            type="submit"
+            className="btn btn-login"
+            onClick={(e) => testLogin(e)}
+          >
+            Login with test credentials
           </button>
           <Link to="/signup" className="link-no-style signup-link">
             Create new account{" "}
