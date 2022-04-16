@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useCart, useProduct } from "contexts";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "../Products/products.css";
 import { useAuth } from "contexts";
 import {
@@ -9,9 +9,14 @@ import {
   filterByRate,
   getFilterByPrice,
 } from "utils";
-import { addProductToCart, addProductToWishlist, removeProductFromWishlist } from "utils/";
+import {
+  addProductToCart,
+  addProductToWishlist,
+  removeProductFromWishlist,
+} from "utils/";
 
 export function ProductsList() {
+  const { isLoggedIn } = useAuth();
   const { state, productDispatch } = useProduct();
   const { cartState, dispatch } = useCart();
   const { encodedToken } = useAuth();
@@ -26,7 +31,7 @@ export function ProductsList() {
       state.wishListData.some((product) => product._id === productId)
     );
   }
-  
+
   function ProductInCart(productId) {
     return cartState.cartProductList.some(
       (product) => product._id === productId
@@ -54,18 +59,26 @@ export function ProductsList() {
                     ? "fas fa-heart"
                     : "fa-regular fa-heart"
                 }`}
-                onClick={() =>
-                  ProductInWishlist(val._id)
-                    ? removeProductFromWishlist(val._id, productDispatch)
-                    : addProductToWishlist(val, productDispatch )
-                }
+                onClick={() => {
+                  if (isLoggedIn) {
+                    ProductInWishlist(val._id)
+                      ? removeProductFromWishlist(val._id, productDispatch)
+                      : addProductToWishlist(val, productDispatch);
+                  } else {
+                    navigate("/login");
+                  }
+                }}
               ></i>
               <button
                 className="btn card-btn"
                 onClick={() => {
-                  ProductInCart(val._id)
-                    ? navigate("/cart")
-                    : addProductToCart(val, dispatch, encodedToken);
+                  if (isLoggedIn) {
+                    ProductInCart(val._id)
+                      ? navigate("/cart")
+                      : addProductToCart(val, dispatch, encodedToken);
+                  } else {
+                    navigate("/login");
+                  }
                 }}
               >
                 {ProductInCart(val._id) ? "Go To Cart" : "Add to cart"}

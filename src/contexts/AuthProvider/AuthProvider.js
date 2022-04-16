@@ -15,14 +15,13 @@ const AuthProvider = ({ children }) => {
       const userData = localStorage.getItem("user");
       const value = await axios.post("/api/auth/signup", userData);
       setEncodedToken(value.data.encodedToken);
-      setIsLoggedIn(true);
     };
     fetch();
   }, [encodedToken]);
 
   const logOut = () => {
     setIsLoggedIn(false);
-    localStorage.clear();
+    localStorage.removeItem("token");
     navigate("/");
   };
 

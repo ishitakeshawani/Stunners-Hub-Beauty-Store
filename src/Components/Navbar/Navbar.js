@@ -47,10 +47,11 @@ export function Navbar() {
           />
         </div>
         <Link
-          to={!isLoggedIn ? "/login" : "/"}
           onClick={() => {
+            closeMenu()
             isLoggedIn && logOut();
           }}
+          to={!isLoggedIn ? "/login" : "/"}
           className="link-no-style nav-link nav-icon-link"
         >
           <i className="fas fa-user hide-icon"></i>
@@ -58,13 +59,21 @@ export function Navbar() {
             {isLoggedIn ? "Logout" : "Login"}
           </span>
         </Link>
-        <Link to="/wishlist" className="link-no-style nav-link nav-icon-link">
+        <Link
+          to="/wishlist"
+          className="link-no-style nav-link nav-icon-link"
+          onClick={closeMenu}
+        >
           <i className="fas fa-heart hide-icon">
             <span className="number-badge">{state.wishListData.length}</span>
           </i>
           <span className="small-fontsize">Wishlist</span>
         </Link>
-        <Link to="/cart" className="link-no-style nav-link nav-icon-link">
+        <Link
+          to="/cart"
+          className="link-no-style nav-link nav-icon-link"
+          onClick={closeMenu}
+        >
           <i className="fas fa-cart-shopping hide-icon">
             <span className="number-badge">
               {cartState.cartProductList.length}
