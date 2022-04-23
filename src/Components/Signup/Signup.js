@@ -81,7 +81,7 @@ export function Signup() {
           <h4 className="login-title">Signup</h4>
 
           <div className="login-label">
-            <label for="">First Name</label>
+            <label for="" id="firstname">First Name</label>
           </div>
           <input
             type="text"
@@ -97,7 +97,7 @@ export function Signup() {
             }
           />
           <div className="login-label">
-            <label for="">Last Name</label>
+            <label for="" id="lastname">Last Name</label>
           </div>
           <input
             type="text"
@@ -114,7 +114,7 @@ export function Signup() {
           />
 
           <div className="login-label">
-            <label for="">Email address</label>
+            <label for="" id="email">Email address</label>
           </div>
           <input
             type="text"
@@ -131,7 +131,7 @@ export function Signup() {
           />
           {error && <p style={{ color: "red" }}>{error}</p>}
           <div>
-            <label for="" className="login-label">
+            <label for="" className="login-label" id="password">
               Password
             </label>
           </div>
@@ -161,7 +161,7 @@ export function Signup() {
           </div>
 
           <div>
-            <label for="" className="login-label">
+            <label for="" className="login-label" id="confirmpassword">
               Confirm Password
             </label>
           </div>
@@ -193,7 +193,7 @@ export function Signup() {
           <div className="flex">
             <div>
               <input type="checkbox" name="remember" id="" required />
-              <label for="" className="remember-label">
+              <label for="" className="remember-label" id="tersm">
                 I accept all Terms & Conditions
               </label>
             </div>

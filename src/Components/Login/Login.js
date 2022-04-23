@@ -100,7 +100,7 @@ export function Login() {
         <div className="login">
           <h4 className="login-title">Login</h4>
           <div className="login-label">
-            <label for="">Email address</label>
+            <label for="" id="email">Email address</label>
           </div>
           <input
             type="text"
@@ -117,7 +117,7 @@ export function Login() {
           />
           {error && <p style={{ color: "red" }}>{error}</p>}
           <div>
-            <label for="" class="login-label">
+            <label for="" class="login-label" id="password">
               Password
             </label>
           </div>
