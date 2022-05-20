@@ -1,14 +1,15 @@
 import { React, useState } from "react";
 import "./navbar.css";
 import logo from "assets/Images/Stunners.png";
-import { Link } from "react-router-dom";
-import { useProduct, useCart } from "contexts";
+import { Link, useLocation } from "react-router-dom";
+import { useProduct, useCart, useAuth } from "contexts";
 
 export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);
-  const [IsItemActive,setIsItemActive] = useState(false);
-  const {cartState} = useCart();
-  const {state} = useProduct();
+  const [IsItemActive, setIsItemActive] = useState(false);
+  const { cartState } = useCart();
+  const { state } = useProduct();
+  const { isLoggedIn, logOut } = useAuth();
 
   const showMenu = () => {
     setIsMenuShow(true);
@@ -16,9 +17,9 @@ export function Navbar() {
   const closeMenu = () => {
     setIsMenuShow(false);
   };
-  const activeItem = () =>{
+  const activeItem = () => {
     setIsItemActive(true);
-  }
+  };
 
   return (
     <nav className="navbar semibold-font-weight">
@@ -32,10 +33,7 @@ export function Navbar() {
       <Link className="nav-link link-no-style nav-home" to="/">
         Home
       </Link>
-      <Link
-        className="nav-link link-no-style nav-products"
-        to="/products"
-      >
+      <Link className="nav-link link-no-style nav-products" to="/products">
         Products
       </Link>
 
@@ -49,15 +47,22 @@ export function Navbar() {
           />
         </div>
         <Link
-          to="/login"
+          onClick={() => {
+            closeMenu()
+            isLoggedIn && logOut();
+          }}
+          to={!isLoggedIn ? "/login" : "/"}
           className="link-no-style nav-link nav-icon-link"
         >
           <i className="fas fa-user hide-icon"></i>
-          <span className="small-fontsize">Login</span>
+          <span className="small-fontsize">
+            {isLoggedIn ? "Logout" : "Login"}
+          </span>
         </Link>
         <Link
           to="/wishlist"
           className="link-no-style nav-link nav-icon-link"
+          onClick={closeMenu}
         >
           <i className="fas fa-heart hide-icon">
             <span className="number-badge">{state.wishListData.length}</span>
@@ -65,11 +70,14 @@ export function Navbar() {
           <span className="small-fontsize">Wishlist</span>
         </Link>
         <Link
-         to="/cart"
+          to="/cart"
           className="link-no-style nav-link nav-icon-link"
+          onClick={closeMenu}
         >
           <i className="fas fa-cart-shopping hide-icon">
-            <span className="number-badge">{cartState.cartProductList.length}</span>
+            <span className="number-badge">
+              {cartState.cartProductList.length}
+            </span>
           </i>
           <span className="small-fontsize">Cart</span>
         </Link>

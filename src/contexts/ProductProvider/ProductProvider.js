@@ -11,9 +11,6 @@ import { addFilters } from "./addFilters";
 const productContext = createContext();
 
 function ProductProvider({ children }) {
-  const [user,setUser] = useState();
- 
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch("/api/products");
@@ -32,7 +29,6 @@ function ProductProvider({ children }) {
     fetchData();
   }, []);
 
-
   const initialState = {
     productList: [],
     sortBy: "",
@@ -49,7 +45,7 @@ function ProductProvider({ children }) {
   const [state, productDispatch] = useReducer(addFilters, initialState);
 
   return (
-    <productContext.Provider value={{ state, productDispatch, user, setUser }}>
+    <productContext.Provider value={{ state, productDispatch }}>
       {children}
     </productContext.Provider>
   );

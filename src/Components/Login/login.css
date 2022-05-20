@@ -37,6 +37,13 @@ body {
   font-size: 1rem;
 }
 
+.password-icon{
+  cursor: pointer;
+  background-color: var(--white);
+  color: var(--black);
+  font-size: 1rem;
+}
+
 .login-password-input {
   outline: 0px;
   border: none;
@@ -64,6 +71,7 @@ body {
 
 .btn-login {
   background-color: var(--pink-color);
+  margin: 0.3rem 0;
 }
 
 .login-icon {
