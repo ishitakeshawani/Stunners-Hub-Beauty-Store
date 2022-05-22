@@ -81,10 +81,9 @@ export const TotalProductDiscount = (cartProductList, totalPrice) => {
     ? cartProductList.reduce(
         (total, product) =>
           total +
-          (Number(product.price) *
-            Number(product.quantity) *
-            (Number(product.quantity) * Number(product.discount))) /
-            100,
+          Number(product.price) *
+            (Number(product.discount) / 100) *
+            Number(product.quantity),
         0
       )
     : 0;
