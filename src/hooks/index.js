@@ -1,0 +1,1 @@
+export { setDocumentTitle } from "./setDocumentTitle";
