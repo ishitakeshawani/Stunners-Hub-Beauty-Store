@@ -49,6 +49,11 @@ export const cartReducer = (cartState, { type, payload }) => {
         ...cartState,
         cartProductList: payload,
       };
+
+    case "RESET_CART":
+      return {
+        cartProductList: [],
+      };
     default:
       return { ...cartState };
   }

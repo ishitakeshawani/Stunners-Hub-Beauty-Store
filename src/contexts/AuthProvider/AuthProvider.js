@@ -19,15 +19,11 @@ const AuthProvider = ({ children }) => {
     fetch();
   }, [encodedToken]);
 
-  const logOut = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("token");
-    navigate("/");
-  };
+ 
 
   return (
     <authContext.Provider
-      value={{ user, setUser, encodedToken, isLoggedIn, setIsLoggedIn, logOut }}
+      value={{ user, setUser, encodedToken, isLoggedIn, setIsLoggedIn }}
     >
       {children}
     </authContext.Provider>

@@ -6,10 +6,11 @@ import { useProduct, useCart, useAuth } from "contexts";
 
 export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);
-  const [IsItemActive, setIsItemActive] = useState(false);
+  const [setIsItemActive] = useState(false);
   const { cartState } = useCart();
   const { state } = useProduct();
-  const { isLoggedIn, logOut } = useAuth();
+  const { isLoggedIn } = useAuth();
+  const { logOut } = useCart();
 
   const showMenu = () => {
     setIsMenuShow(true);
@@ -48,7 +49,7 @@ export function Navbar() {
         </div>
         <Link
           onClick={() => {
-            closeMenu()
+            closeMenu();
             isLoggedIn && logOut();
           }}
           to={!isLoggedIn ? "/login" : "/"}
@@ -65,7 +66,9 @@ export function Navbar() {
           onClick={closeMenu}
         >
           <i className="fas fa-heart hide-icon">
-            <span className="number-badge">{state.wishListData.length}</span>
+            {state.wishListData.length > 0 && (
+              <span className="number-badge">{state.wishListData.length}</span>
+            )}
           </i>
           <span className="small-fontsize">Wishlist</span>
         </Link>
@@ -75,9 +78,11 @@ export function Navbar() {
           onClick={closeMenu}
         >
           <i className="fas fa-cart-shopping hide-icon">
-            <span className="number-badge">
-              {cartState.cartProductList.length}
-            </span>
+            {cartState.cartProductList.length > 0 && (
+              <span className="number-badge">
+                {cartState.cartProductList.length}
+              </span>
+            )}
           </i>
           <span className="small-fontsize">Cart</span>
         </Link>
