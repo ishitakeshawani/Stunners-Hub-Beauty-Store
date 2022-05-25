@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { addProductToWishlist } from "utils";
 import { Address } from "Components";
 import { setDocumentTitle } from "hooks";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function Cart() {
   setDocumentTitle("Stunners Hub | Cart");
@@ -25,6 +27,7 @@ export function Cart() {
   }
   return (
     <div class="cart-page">
+      <ToastContainer />
       {cartState.cartProductList.length > 0 ? (
         <div>
           <div class="cart-page-title semibold-font-weight">My Cart</div>

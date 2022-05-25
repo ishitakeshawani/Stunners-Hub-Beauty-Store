@@ -90,7 +90,6 @@ export function Login() {
     } catch (e) {
       const notify = () => toast(e.message);
       notify();
-      console.log(e);
     }
   };
 

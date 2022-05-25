@@ -15,7 +15,7 @@ export function Address() {
       <button
         id="myBtn"
         class="btn click-btn"
-        onClick={() => console.log(!openModal)}
+        onClick={() => setOpenModal(true)}
       >
         change
       </button>

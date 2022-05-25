@@ -50,7 +50,6 @@ export function Signup() {
       if (doValidate()) {
         e.preventDefault();
         const value = await axios.post("/api/auth/signup", userData);
-        console.log(value.data.createdUser);
         setUser(value.data.createdUser);
         localStorage.setItem("token", value.data.encodedToken);
         localStorage.setItem("user", JSON.stringify(userData));
@@ -71,7 +70,6 @@ export function Signup() {
     } catch (e) {
       const notify = () => toast(e.message);
       notify();
-      console.log("error", e);
     }
   };
 

@@ -4,6 +4,7 @@ import { addProductToCart, removeProductFromWishlist } from "utils";
 import { useNavigate } from "react-router-dom";
 import "./wishlist.css";
 import { setDocumentTitle } from "hooks";
+import { ToastContainer } from "react-toastify";
 
 export function Wishlist() {
   setDocumentTitle("Stunners Hub | Wishlist");
@@ -22,6 +23,7 @@ export function Wishlist() {
 
   return (
     <div class="wishlist">
+      <ToastContainer />
       {wishList.length > 0
         ? wishList.map((val) => (
             <div className="card product-card">
