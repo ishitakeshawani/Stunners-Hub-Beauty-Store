@@ -6,8 +6,10 @@ import axios from "axios";
 import { useAuth, useCart } from "contexts";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { setDocumentTitle } from "hooks";
 
 export function Signup() {
+  setDocumentTitle("Stunners Hub | Signup");
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -81,7 +83,9 @@ export function Signup() {
           <h4 className="login-title">Signup</h4>
 
           <div className="login-label">
-            <label for="" id="firstname">First Name</label>
+            <label for="" id="firstname">
+              First Name
+            </label>
           </div>
           <input
             type="text"
@@ -97,7 +101,9 @@ export function Signup() {
             }
           />
           <div className="login-label">
-            <label for="" id="lastname">Last Name</label>
+            <label for="" id="lastname">
+              Last Name
+            </label>
           </div>
           <input
             type="text"
@@ -114,7 +120,9 @@ export function Signup() {
           />
 
           <div className="login-label">
-            <label for="" id="email">Email address</label>
+            <label for="" id="email">
+              Email address
+            </label>
           </div>
           <input
             type="text"

@@ -1,29 +1,32 @@
-import { React,useEffect,useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Footer } from "Components";
 import { topbrandslist } from "backend/db/topbrands";
 import firstcollection from "assets/Images/collection1.jfif";
 import secondcollection from "assets/Images/collection2.jfif";
 import { Link } from "react-router-dom";
 import "./homepage.css";
+import { setDocumentTitle } from "hooks";
 
 export function Homepage() {
+  setDocumentTitle("Stunners Hub | Home");
 
-  const [categorylist,setCategoryList] = useState([]);
-  
-  useEffect(()=>{
-    const fetchData = async () =>{
-      const data = await fetch('/api/categories');
+  const [categorylist, setCategoryList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch("/api/categories");
       const jsonData = await data.json();
       setCategoryList(jsonData.categories);
-    }
+    };
     fetchData();
-  },[]);
+  }, []);
 
   return (
     <div>
-     
       <div className="banner">
-       <Link to="/products"><button className="btn image-btn">Shop Now</button></Link>
+        <Link to="/products">
+          <button className="btn image-btn">Shop Now</button>
+        </Link>
       </div>
 
       <div className="categories">

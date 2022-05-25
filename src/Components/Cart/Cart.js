@@ -6,8 +6,10 @@ import { useProduct } from "contexts";
 import { useNavigate } from "react-router-dom";
 import { addProductToWishlist } from "utils";
 import { Address } from "Components";
+import { setDocumentTitle } from "hooks";
 
 export function Cart() {
+  setDocumentTitle("Stunners Hub | Cart");
   const {
     cartState,
     dispatch,
@@ -128,4 +130,3 @@ export function Cart() {
     </div>
   );
 }
-
