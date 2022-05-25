@@ -58,19 +58,19 @@ export function Cart() {
                       <button
                         class="cart-product-btn"
                         onClick={() =>
-                          handleQuantity(product, "increment", dispatch)
+                          handleQuantity(product, "decrement", dispatch)
                         }
                       >
-                        +
+                        -
                       </button>
                       <div class="cart-product-number">{product.quantity}</div>
                       <button
                         class="cart-product-btn"
                         onClick={() =>
-                          handleQuantity(product, "decrement", dispatch)
+                          handleQuantity(product, "increment", dispatch)
                         }
                       >
-                        -
+                        +
                       </button>
                     </div>
                     <button
@@ -109,11 +109,11 @@ export function Cart() {
                 </div>
                 <div class="flex-row">
                   <div>Discount</div>
-                  <div>₹{totalDiscount}</div>
+                  <div>- ₹{totalDiscount}</div>
                 </div>
                 <div class="flex-row">
                   <div>Delivery charges</div>
-                  <div>₹50</div>
+                  <div>₹0</div>
                 </div>
               </div>
               <hr />
