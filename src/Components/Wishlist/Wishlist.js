@@ -24,8 +24,9 @@ export function Wishlist() {
   return (
     <div class="wishlist">
       <ToastContainer />
-      {wishList.length > 0
-        ? wishList.map((val) => (
+      <div className="wishlist-cards-list">
+        {wishList.length > 0 ? (
+          wishList.map((val) => (
             <div className="card product-card">
               <div className="card-padding">
                 <img className="product-img" src={val.image} alt="" />
@@ -62,7 +63,10 @@ export function Wishlist() {
               </div>
             </div>
           ))
-        : "Your wishlist is empty."}
+        ) : (
+          <h3 className="empty-wishlist">Your wishlist is empty.</h3>
+        )}
+      </div>
     </div>
   );
 }
