@@ -54,6 +54,7 @@ export function Address() {
                 type="text"
                 className="input"
                 required
+                value={userAddress.name}
                 onChange={(e) =>
                   setUserAddress((prev) => ({ ...prev, name: e.target.value }))
                 }
@@ -67,6 +68,7 @@ export function Address() {
                 className="input"
                 type="tel"
                 id="phone"
+                value={userAddress.phoneNo}
                 name="phone"
                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                 onChange={(e) =>
@@ -82,7 +84,7 @@ export function Address() {
                   Country
                 </label>
               </div>
-              <input type="text" className="input" required/>
+              <input type="text" className="input" required value={userAddress.country}/>
               <div>
                 <label htmlFor="address" className="name-label">
                   Address
@@ -91,6 +93,7 @@ export function Address() {
               <input
                 type="address"
                 required
+                value={userAddress.address}
                 className="input-address"
                 onChange={(e) =>
                   setUserAddress((prev) => ({
@@ -118,6 +121,20 @@ export function Address() {
                 cancel
               </button>
             </div>
+            <button
+              className="btn close-btn cancel-btn"
+              onClick={() =>
+                setUserAddress({
+                  name: "Anya Sharif",
+                  phoneNo: "+917823562345",
+                  country: "India",
+                  address:
+                    "3, Sec 22, 361, A Jerbai Wadi Road, Near Post Office, Parel,Mumbai Maharashtra",
+                })
+              }
+            >
+              Add dummy address
+            </button>
           </div>
         </div>
       ) : (
