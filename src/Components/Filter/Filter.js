@@ -45,7 +45,7 @@ export function Filter() {
         <div className="semibold-font-weight category-title">Category</div>
         {categoriesList.map((category) => {
           return (
-            <div className="inline-category-item">
+            <div className="inline-category-item" key={category._id}>
               <label>
                 <input
                   type="checkbox"
@@ -95,7 +95,7 @@ export function Filter() {
               className="filter-input"
               value="3STAR_AND_ABOVE"
               checked={state.filterBy === "3STAR_AND_ABOVE"}
-              onClick={(e) => {
+              onChange={(e) => {
                 productDispatch({
                   type: "FILTER_BY_RATE",
                   payload: e.target.value,
@@ -113,7 +113,7 @@ export function Filter() {
               className="filter-input"
               value="2STAR_AND_ABOVE"
               checked={state.filterBy === "2STAR_AND_ABOVE"}
-              onClick={(e) => {
+              onChange={(e) => {
                 productDispatch({
                   type: "FILTER_BY_RATE",
                   payload: e.target.value,
