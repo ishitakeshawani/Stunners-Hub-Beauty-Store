@@ -41,14 +41,6 @@ export function Navbar() {
       </Link>
 
       <div className={isMenuShow ? "mainMenuShow" : "mainMenu"}>
-        <div className="searchbar">
-          <i className="fa-solid fa-magnifying-glass search-icon"></i>
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search on Stunners Hub"
-          />
-        </div>
         <Link
           onClick={() => {
             closeMenu();
