@@ -3,11 +3,13 @@ import { useProduct, useCart } from "contexts";
 import { addProductToCart, removeProductFromWishlist } from "utils";
 import { useNavigate } from "react-router-dom";
 import "./wishlist.css";
-import { setDocumentTitle } from "hooks";
+import { setDocumentTitle, scrollToTop } from "hooks";
 import { ToastContainer } from "react-toastify";
+import { nanoid } from "nanoid";
 
 export function Wishlist() {
   setDocumentTitle("Stunners Hub | Wishlist");
+  scrollToTop();
   const { state, productDispatch } = useProduct();
   const { cartState, dispatch } = useCart();
   const wishList = state.wishListData;
@@ -22,12 +24,12 @@ export function Wishlist() {
   }
 
   return (
-    <div class="wishlist">
+    <div className="wishlist">
       <ToastContainer />
       <div className="wishlist-cards-list">
         {wishList.length > 0 ? (
           wishList.map((val) => (
-            <div className="card product-card">
+            <div className="card product-card" key={val._id}>
               <div className="card-padding">
                 <img className="product-img" src={val.image} alt="" />
                 <div className="product-card-title">{val.name}</div>
@@ -75,10 +77,10 @@ const Rate = ({ rate }) => {
   return (
     <div className="rating small-fontsize">
       {[...Array(rate)].map(() => {
-        return <i className="fas fa-star"></i>;
+        return <i className="fas fa-star" key={nanoid()}></i>;
       })}
       {[...Array(5 - rate)].map(() => {
-        return <i className="far fa-star"></i>;
+        return <i className="far fa-star" key={nanoid()}></i>;
       })}
     </div>
   );
