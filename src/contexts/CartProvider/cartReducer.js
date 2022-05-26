@@ -54,6 +54,12 @@ export const cartReducer = (cartState, { type, payload }) => {
       return {
         cartProductList: [],
       };
+    case "SET_ADDRESS":
+      console.log(payload);
+      return {
+        ...cartState,
+        address: payload,
+      };
     default:
       return { ...cartState };
   }

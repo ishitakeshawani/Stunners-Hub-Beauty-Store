@@ -36,7 +36,11 @@
 }
 
 .modal {
-  overflow: hidden;
+  overflow: hidden;;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
 }
 
 .modal-content {
@@ -45,7 +49,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 40%;
+  width: 30%;
   height: auto;
   border-radius: 5px;
 }
@@ -53,11 +57,12 @@
 .input {
   width: 20rem;
   margin: 0.5rem 0;
+  padding: 10px;
 }
 
 .input-address {
-  height: 7rem;
   width: 20rem;
+  padding: 10px;
 }
 
 .name-label {

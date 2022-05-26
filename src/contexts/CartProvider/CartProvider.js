@@ -5,9 +5,9 @@ import { useAuth } from "contexts/AuthProvider/AuthProvider";
 const cartContext = createContext();
 
 function CartProvider({ children }) {
-  const [name, setName] = useState();
   const initialState = {
     cartProductList: [],
+    address: {},
   };
   const { setIsLoggedIn } = useAuth();
   const [cartState, dispatch] = useReducer(cartReducer, initialState);
