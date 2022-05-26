@@ -5,10 +5,16 @@ import firstcollection from "assets/Images/collection1.jfif";
 import secondcollection from "assets/Images/collection2.jfif";
 import { Link } from "react-router-dom";
 import "./homepage.css";
-import { setDocumentTitle } from "hooks";
+import { setDocumentTitle, scrollToTop } from "hooks";
+import { nanoid } from "nanoid";
+import { useProduct } from "contexts";
+import { useNavigate } from "react-router-dom";
 
 export function Homepage() {
   setDocumentTitle("Stunners Hub | Home");
+  scrollToTop();
+  const { state, productDispatch } = useProduct();
+  const navigate = useNavigate();
 
   const [categorylist, setCategoryList] = useState([]);
 
@@ -33,7 +39,18 @@ export function Homepage() {
         <div className="categories-title">Top Categories</div>
         <div className="category-list">
           {categorylist.map((val) => (
-            <div className="category-list-item">
+            <div
+              className="category-list-item"
+              key={val._id}
+              onClick={() => {
+                productDispatch({
+                  type: "FILTER_BY_CATEGORY",
+                  payload: val.categoryName,
+                });
+                state.FilterData.filterByCategories.includes(val.categoryName);
+                navigate("/products");
+              }}
+            >
               <div className="category-list-item-name">{val.categoryName}</div>
               <img
                 className="category-list-item-image"
@@ -52,11 +69,13 @@ export function Homepage() {
             className="onlyat-item"
             src={firstcollection}
             alt="collection-items"
+            onClick={() => navigate("/products")}
           />
           <img
             className="onlyat-item"
             src={secondcollection}
             alt="collection-items"
+            onClick={() => navigate("/products")}
           />
         </div>
       </div>
@@ -65,7 +84,12 @@ export function Homepage() {
         <div className="top-brands-title">Top Brands</div>
         <div className="top-brands-list">
           {topbrandslist.map((val) => (
-            <img className="top-brands-item" src={val} alt="top-brands" />
+            <img
+              key={nanoid()}
+              className="top-brands-item"
+              src={val}
+              alt="top-brands"
+            />
           ))}
         </div>
       </div>
