@@ -6,10 +6,11 @@ import axios from "axios";
 import { useAuth, useCart } from "contexts";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { setDocumentTitle } from "hooks";
+import { setDocumentTitle, scrollToTop } from "hooks";
 
 export function Signup() {
   setDocumentTitle("Stunners Hub | Signup");
+  scrollToTop();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -68,8 +69,13 @@ export function Signup() {
         navigate("/");
       }
     } catch (e) {
-      const notify = () => toast(e.message);
-      notify();
+      if (e.response.status === 422) {
+        const notify = () => toast("Email Already Exists.");
+        notify();
+      } else {
+        const notify = () => toast(e.message);
+        notify();
+      }
     }
   };
 
@@ -81,7 +87,7 @@ export function Signup() {
           <h4 className="login-title">Signup</h4>
 
           <div className="login-label">
-            <label for="" id="firstname">
+            <label htmlFor="firstname" id="firstname">
               First Name
             </label>
           </div>
@@ -99,7 +105,7 @@ export function Signup() {
             }
           />
           <div className="login-label">
-            <label for="" id="lastname">
+            <label htmlFor="lastname" id="lastname">
               Last Name
             </label>
           </div>
@@ -118,7 +124,7 @@ export function Signup() {
           />
 
           <div className="login-label">
-            <label for="" id="email">
+            <label htmlFor="email" id="email">
               Email address
             </label>
           </div>
@@ -137,7 +143,7 @@ export function Signup() {
           />
           {error && <p style={{ color: "red" }}>{error}</p>}
           <div>
-            <label for="" className="login-label" id="password">
+            <label htmlFor="password" className="login-label" id="password">
               Password
             </label>
           </div>
@@ -167,7 +173,11 @@ export function Signup() {
           </div>
 
           <div>
-            <label for="" className="login-label" id="confirmpassword">
+            <label
+              htmlFor="password"
+              className="login-label"
+              id="confirmpassword"
+            >
               Confirm Password
             </label>
           </div>
@@ -199,7 +209,7 @@ export function Signup() {
           <div className="flex">
             <div>
               <input type="checkbox" name="remember" id="" required />
-              <label for="" className="remember-label" id="tersm">
+              <label htmlFor="checkbox" className="remember-label" id="tersm">
                 I accept all Terms & Conditions
               </label>
             </div>

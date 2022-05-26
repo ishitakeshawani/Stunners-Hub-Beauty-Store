@@ -11,6 +11,8 @@ export function Navbar() {
   const { state } = useProduct();
   const { isLoggedIn } = useAuth();
   const { logOut } = useCart();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const showMenu = () => {
     setIsMenuShow(true);
@@ -52,7 +54,7 @@ export function Navbar() {
             closeMenu();
             isLoggedIn && logOut();
           }}
-          to={!isLoggedIn ? "/login" : "/"}
+          to={!isLoggedIn ? "/login" : from}
           className="link-no-style nav-link nav-icon-link"
         >
           <i className="fas fa-user hide-icon"></i>

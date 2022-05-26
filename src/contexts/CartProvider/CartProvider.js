@@ -26,7 +26,6 @@ function CartProvider({ children }) {
     dispatch({
       type: "RESET_CART",
     });
-    navigate("/");
   };
 
   return (
