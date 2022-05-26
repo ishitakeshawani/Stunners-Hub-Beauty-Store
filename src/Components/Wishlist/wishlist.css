@@ -55,6 +55,7 @@
 @media only screen and (max-width: 120rem) {
   .wishlist {
     margin: 3.1rem;
+    justify-content: center;
   }
   .wishlist-cards-list {
     display: grid;
