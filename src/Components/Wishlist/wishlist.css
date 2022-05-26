@@ -1,16 +1,29 @@
 .wishlist {
+  display: flex;
+  margin: 3.1rem;
+}
+.wishlist-cards-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  align-items: center;
+  grid-gap: 1.5rem;
+  gap: 1.5rem;
   justify-content: center;
-  margin: 3rem;
+}
+.empty-wishlist {
+  width: 100vw;
+  text-align: center;
 }
 
 @media only screen and (max-width: 48rem) {
   .wishlist {
+    margin: 2rem;
+  }
+  .wishlist-cards-list {
     display: grid;
-    grid-template-columns: auto auto;
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+    gap: 1.5rem;
+    justify-content: center;
   }
   .card {
     width: 15rem;
@@ -24,15 +37,37 @@
 }
 
 @media only screen and (max-width: 30rem) {
-  .wishlist {
+  .wishlist-cards-list {
     display: grid;
-    grid-template-columns: auto;
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5rem;
+    gap: 1.5rem;
+    justify-content: center;
   }
   .card {
     width: 17rem;
   }
   .hide-icon {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 120rem) {
+  .wishlist {
+    margin: 3.1rem;
+    justify-content: center;
+  }
+  .wishlist-cards-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1.5rem;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .card {
+    width: 15rem;
+  }
+  .card-padding {
+    padding: 10px 10px 0 10px;
   }
 }

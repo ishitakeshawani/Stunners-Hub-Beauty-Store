@@ -6,8 +6,13 @@ import { useProduct } from "contexts";
 import { useNavigate } from "react-router-dom";
 import { addProductToWishlist } from "utils";
 import { Address } from "Components";
+import { setDocumentTitle, scrollToTop } from "hooks";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function Cart() {
+  setDocumentTitle("Stunners Hub | Cart");
+  scrollToTop();
   const {
     cartState,
     dispatch,
@@ -22,54 +27,57 @@ export function Cart() {
     return state.wishListData.some((product) => product._id === productId);
   }
   return (
-    <div class="cart-page">
+    <div className="cart-page">
+      <ToastContainer />
       {cartState.cartProductList.length > 0 ? (
         <div>
-          <div class="cart-page-title semibold-font-weight">My Cart</div>
+          <div className="cart-page-title semibold-font-weight">My Cart</div>
           <Address />
-          <div class="cart-page-item">
+          <div className="cart-page-item">
             <div>
               {cartState.cartProductList.map((product) => (
-                <div class="cart-product-card">
-                  <div class="cart-product-img">
+                <div className="cart-product-card" key={product._id}>
+                  <div className="cart-product-img">
                     <img
                       src={product.image}
                       alt="product-img"
                       className="cart-image"
                     />
                   </div>
-                  <div class="cart-product-details">
-                    <div class="cart-product-name bold-font-weight">
+                  <div className="cart-product-details">
+                    <div className="cart-product-name bold-font-weight">
                       {product.name}
                     </div>
-                    <div class="cart-product-price bold-font-weight">
+                    <div className="cart-product-price bold-font-weight">
                       ₹{product.price}
-                      <span class="cart-product-off">
+                      <span className="cart-product-off">
                         {product.discount}% off
                       </span>
                     </div>
-                    <div class="product-quantity flex">
-                      <div class="product-quantity-label">Quantity :</div>
+                    <div className="product-quantity flex">
+                      <div className="product-quantity-label">Quantity :</div>
                       <button
-                        class="cart-product-btn"
-                        onClick={() =>
-                          handleQuantity(product, "increment", dispatch)
-                        }
-                      >
-                        +
-                      </button>
-                      <div class="cart-product-number">{product.quantity}</div>
-                      <button
-                        class="cart-product-btn"
+                        className="cart-product-btn"
                         onClick={() =>
                           handleQuantity(product, "decrement", dispatch)
                         }
                       >
                         -
                       </button>
+                      <div className="cart-product-number">
+                        {product.quantity}
+                      </div>
+                      <button
+                        className="cart-product-btn"
+                        onClick={() =>
+                          handleQuantity(product, "increment", dispatch)
+                        }
+                      >
+                        +
+                      </button>
                     </div>
                     <button
-                      class="btn cart-remove-btn"
+                      className="btn cart-remove-btn"
                       onClick={() =>
                         RemoveProductFromCart(product._id, dispatch)
                       }
@@ -77,7 +85,7 @@ export function Cart() {
                       Remove from cart
                     </button>
                     <button
-                      class="btn cart-wishlist-btn"
+                      className="btn cart-wishlist-btn"
                       onClick={() => {
                         ProductInWishlist(product._id)
                           ? navigate("/wishlist")
@@ -92,33 +100,33 @@ export function Cart() {
                 </div>
               ))}
             </div>
-            <div class="price-details-card">
-              <div class="price-details-title bold-font-weight">
+            <div className="price-details-card">
+              <div className="price-details-title bold-font-weight">
                 PRICE DETAILS
               </div>
               <hr />
-              <div class="price-details-first-section">
-                <div class="flex-row">
+              <div className="price-details-first-section">
+                <div className="flex-row">
                   <div>Price({cartState.cartProductList.length})</div>
                   <div>₹{totalPrice}</div>
                 </div>
-                <div class="flex-row">
+                <div className="flex-row">
                   <div>Discount</div>
-                  <div>₹{totalDiscount}</div>
+                  <div>- ₹{totalDiscount}</div>
                 </div>
-                <div class="flex-row">
+                <div className="flex-row">
                   <div>Delivery charges</div>
-                  <div>₹50</div>
+                  <div>₹0</div>
                 </div>
               </div>
               <hr />
-              <div class="flex-row">
-                <div class="bold-font-weight">Total Amount</div>
-                <div class="bold-font-weight">₹{totalAmount}</div>
+              <div className="flex-row">
+                <div className="bold-font-weight">Total Amount</div>
+                <div className="bold-font-weight">₹{totalAmount}</div>
               </div>
               <hr />
               <div>You will be save ₹{totalSave} in this order.</div>
-              <button class="btn place-order">Place order</button>
+              <button className="btn place-order">Place order</button>
             </div>
           </div>{" "}
         </div>
@@ -128,4 +136,3 @@ export function Cart() {
     </div>
   );
 }
-

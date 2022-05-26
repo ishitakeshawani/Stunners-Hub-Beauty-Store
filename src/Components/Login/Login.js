@@ -1,14 +1,16 @@
 import { React, useState } from "react";
 import "./login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useAuth, useCart } from "contexts";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import bcyrpt from "bcryptjs";
-import { users } from "backend/db/users";
+import { setDocumentTitle, scrollToTop } from "hooks";
 
 export function Login() {
+  setDocumentTitle("Stunners Hub | Login");
+  scrollToTop();
   const [type, setType] = useState("password");
   const [userData, setUserData] = useState({
     email: "",
@@ -19,6 +21,8 @@ export function Login() {
   const { dispatch } = useCart();
   const [error, setError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const doValidate = () => {
     if (
@@ -65,7 +69,7 @@ export function Login() {
       email: "",
       password: "",
     });
-    navigate("/");
+    navigate(from, { replace: true });
   };
 
   const onSubmitHandler = async (e) => {
@@ -84,12 +88,11 @@ export function Login() {
           email: "",
           password: "",
         });
-        navigate("/");
+        navigate(from, { replace: true });
       }
     } catch (e) {
       const notify = () => toast(e.message);
       notify();
-      console.log(e);
     }
   };
 
@@ -100,7 +103,9 @@ export function Login() {
         <div className="login">
           <h4 className="login-title">Login</h4>
           <div className="login-label">
-            <label for="" id="email">Email address</label>
+            <label htmlFor="email" id="email">
+              Email address
+            </label>
           </div>
           <input
             type="text"
@@ -117,7 +122,7 @@ export function Login() {
           />
           {error && <p style={{ color: "red" }}>{error}</p>}
           <div>
-            <label for="" class="login-label" id="password">
+            <label htmlFor="password" className="login-label" id="password">
               Password
             </label>
           </div>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const getSortedData = ({ sortBy }, productList) => {
   if (sortBy === "PRICE_HIGH_TO_LOW") {
@@ -47,32 +48,34 @@ export const getFilterByPrice = ({ getByPrice }, productList) => {
 
 export const addProductToWishlist = async (product, productDispatch) => {
   try {
-    const response = await axios.post( "/api/user/wishlist",
-    { product },
-    {
-      headers: { authorization: localStorage.getItem("token") },
-    });
+    const response = await axios.post(
+      "/api/user/wishlist",
+      { product },
+      {
+        headers: { authorization: localStorage.getItem("token") },
+      }
+    );
     productDispatch({
       type: "ADD_TO_WISHLIST",
-      payload: product
-    })
+      payload: product,
+    });
   } catch (e) {
-    console.log(e);
+    const notify = () => toast(e.message);
+    notify();
   }
 };
 
-
-export const removeProductFromWishlist = async (productId, productDispatch) =>{
+export const removeProductFromWishlist = async (productId, productDispatch) => {
   try {
-    const response = await axios.delete(`/api/user/wishlist/${productId}`,
-    {
+    const response = await axios.delete(`/api/user/wishlist/${productId}`, {
       headers: { authorization: localStorage.getItem("token") },
     });
     productDispatch({
       type: "REMOVE_FROM_WISHLIST",
-      payload: productId
-    })
-  } catch (error) {
-    console.log(error);
+      payload: productId,
+    });
+  } catch (e) {
+    const notify = () => toast(e.message);
+    notify();
   }
-}
+};

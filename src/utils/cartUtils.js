@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const addProductToCart = async (product, dispatch) => {
   try {
@@ -15,8 +16,9 @@ export const addProductToCart = async (product, dispatch) => {
       type: "ADD_TO_CART",
       payload: product,
     });
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    const notify = () => toast(e.message);
+    notify();
   }
 };
 
@@ -25,13 +27,13 @@ export const RemoveProductFromCart = async (productId, dispatch) => {
     const response = await axios.delete(`api/user/cart/${productId}`, {
       headers: { authorization: localStorage.getItem("token") },
     });
-    console.log(response);
     dispatch({
       type: "REMOVE_FROM_CART",
       payload: productId,
     });
-  } catch (error) {
-    console.log(error());
+  } catch (e) {
+    const notify = () => toast(e.message);
+    notify();
   }
 };
 
@@ -62,9 +64,9 @@ export const handleQuantity = async (product, getType, dispatch) => {
         authorization: localStorage.getItem("token"),
       },
     });
-    console.log(res);
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    const notify = () => toast(e.message);
+    notify();
   }
 };
 

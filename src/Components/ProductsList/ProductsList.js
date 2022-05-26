@@ -1,8 +1,9 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import { useCart, useProduct } from "contexts";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Products/products.css";
 import { useAuth } from "contexts";
+import { nanoid } from "nanoid";
 import {
   getSortedData,
   getFilteredData,
@@ -42,7 +43,7 @@ export function ProductsList() {
     <div className="cards-list">
       {sortedData.length > 0 ? (
         sortedData.map((val) => (
-          <div className="card product-card">
+          <div className="card product-card" key={val._id}>
             <div className="card-padding">
               <img className="product-img" src={val.image} alt="" />
               <div className="product-card-title">{val.name}</div>
@@ -96,11 +97,11 @@ export function ProductsList() {
 const Rate = ({ rate }) => {
   return (
     <div className="rating small-fontsize">
-      {[...Array(rate)].map(() => {
-        return <i className="fas fa-star"></i>;
+      {[...Array(rate)].map((index) => {
+        return <i key={nanoid()} className="fas fa-star"></i>;
       })}
-      {[...Array(5 - rate)].map(() => {
-        return <i className="far fa-star"></i>;
+      {[...Array(5 - rate)].map((index) => {
+        return <i key={nanoid()} className="far fa-star"></i>;
       })}
     </div>
   );

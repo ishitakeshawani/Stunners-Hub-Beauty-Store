@@ -18,10 +18,23 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/products" element={<Products />} />
+        <Route
+          path="/"
+          element={
+            <RequireAuth isLoggedIn={isLoggedIn}>
+              <Homepage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <RequireAuth isLoggedIn={isLoggedIn}>
+              <Products />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route

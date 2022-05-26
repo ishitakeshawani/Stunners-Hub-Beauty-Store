@@ -6,10 +6,13 @@ import { useProduct, useCart, useAuth } from "contexts";
 
 export function Navbar() {
   const [isMenuShow, setIsMenuShow] = useState(false);
-  const [IsItemActive, setIsItemActive] = useState(false);
+  const [setIsItemActive] = useState(false);
   const { cartState } = useCart();
   const { state } = useProduct();
-  const { isLoggedIn, logOut } = useAuth();
+  const { isLoggedIn } = useAuth();
+  const { logOut } = useCart();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const showMenu = () => {
     setIsMenuShow(true);
@@ -38,20 +41,12 @@ export function Navbar() {
       </Link>
 
       <div className={isMenuShow ? "mainMenuShow" : "mainMenu"}>
-        <div className="searchbar">
-          <i className="fa-solid fa-magnifying-glass search-icon"></i>
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search on Stunners Hub"
-          />
-        </div>
         <Link
           onClick={() => {
-            closeMenu()
+            closeMenu();
             isLoggedIn && logOut();
           }}
-          to={!isLoggedIn ? "/login" : "/"}
+          to={!isLoggedIn ? "/login" : from}
           className="link-no-style nav-link nav-icon-link"
         >
           <i className="fas fa-user hide-icon"></i>
@@ -65,7 +60,9 @@ export function Navbar() {
           onClick={closeMenu}
         >
           <i className="fas fa-heart hide-icon">
-            <span className="number-badge">{state.wishListData.length}</span>
+            {state.wishListData.length > 0 && (
+              <span className="number-badge">{state.wishListData.length}</span>
+            )}
           </i>
           <span className="small-fontsize">Wishlist</span>
         </Link>
@@ -75,9 +72,11 @@ export function Navbar() {
           onClick={closeMenu}
         >
           <i className="fas fa-cart-shopping hide-icon">
-            <span className="number-badge">
-              {cartState.cartProductList.length}
-            </span>
+            {cartState.cartProductList.length > 0 && (
+              <span className="number-badge">
+                {cartState.cartProductList.length}
+              </span>
+            )}
           </i>
           <span className="small-fontsize">Cart</span>
         </Link>

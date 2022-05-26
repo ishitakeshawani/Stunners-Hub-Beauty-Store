@@ -1,13 +1,15 @@
 import { React, useContext, createContext, useState, useReducer } from "react";
 import { cartReducer } from "./cartReducer";
 import { TotalCartPrice, TotalProductDiscount } from "../../utils";
+import { useAuth } from "contexts/AuthProvider/AuthProvider";
 const cartContext = createContext();
 
 function CartProvider({ children }) {
-  const [name, setName] = useState();
   const initialState = {
     cartProductList: [],
+    address: {},
   };
+  const { setIsLoggedIn } = useAuth();
   const [cartState, dispatch] = useReducer(cartReducer, initialState);
 
   const totalPrice = TotalCartPrice(cartState.cartProductList);
@@ -17,6 +19,15 @@ function CartProvider({ children }) {
   ).toFixed(2);
   const totalAmount = (totalPrice - totalDiscount).toFixed(2);
   const totalSave = (totalPrice - totalAmount).toFixed(2);
+
+  const logOut = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("token");
+    dispatch({
+      type: "RESET_CART",
+    });
+  };
+
   return (
     <cartContext.Provider
       value={{
@@ -26,6 +37,7 @@ function CartProvider({ children }) {
         totalDiscount,
         totalAmount,
         totalSave,
+        logOut,
       }}
     >
       {children}

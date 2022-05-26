@@ -40,10 +40,9 @@ body {
   background-color: var(--white);
   padding: 2rem;
   position: sticky;
-  height: 30rem;
+  height: fit-content;
   top: 7rem;
   left: 0;
-  overflow-y: scroll;
 }
 
 .price-title,
@@ -200,11 +199,11 @@ body {
     width: 16%;
     padding-left: 10px;
   }
-  .product-card-title{
+  .product-card-title {
     margin: 1rem 0;
     font-size: 0.98rem;
   }
-  .card-mrp{
+  .card-mrp {
     font-size: 0.79rem;
   }
   .card {
@@ -319,5 +318,12 @@ body {
   }
   .small-fontsize {
     font-size: 0.79rem;
+  }
+}
+
+@media only screen and (max-height: 43em) {
+  .filter {
+    height: 80vh;
+    overflow-y: scroll;
   }
 }
