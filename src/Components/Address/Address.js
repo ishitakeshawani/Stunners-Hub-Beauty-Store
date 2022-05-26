@@ -4,39 +4,39 @@ import "./address.css";
 export function Address() {
   const [openModal, setOpenModal] = useState(false);
   return (
-    <div class="address">
-      <div class="address-sec">
-        <div class="address-title">Deliver to: Richard Mason</div>
-        <div class="detail-address">
+    <div className="address">
+      <div className="address-sec">
+        <div className="address-title">Deliver to: Richard Mason</div>
+        <div className="detail-address">
           3, Sec 22, 361, A Jerbai Wadi Road, Near Post Office, Parel,Mumbai
           Maharashtra
         </div>
       </div>
       <button
         id="myBtn"
-        class="btn click-btn"
+        className="btn click-btn"
         onClick={() => setOpenModal(true)}
       >
         change
       </button>
       {openModal ? 
-        <div id="myModal" class="modal">
-          <div class="modal-content">
+        <div id="myModal" className="modal">
+          <div className="modal-content">
             <form action="">
-              <h6 class="center-text">Add Address</h6>
+              <h6 className="center-text">Add Address</h6>
               <div>
-                <label for="" class="name-label">
+                <label htmlFor="name" className="name-label">
                   Full Name
                 </label>
               </div>
-              <input type="text" class="input" />
+              <input type="text" className="input" />
               <div>
-                <label for="" class="name-label">
+                <label htmlFor="number" className="name-label">
                   Contact Number
                 </label>
               </div>
               <input
-                class="input"
+                className="input"
                 type="tel"
                 id="phone"
                 name="phone"
@@ -44,15 +44,15 @@ export function Address() {
                 required
               />
               <div>
-                <label for="" class="name-label">
+                <label htmlFor="address" className="name-label">
                   Address
                 </label>
               </div>
-              <input type="address" class="input-address" />
+              <input type="address" className="input-address" />
             </form>
-            <div class="flex">
-              <button class="btn save-btn">save</button>
-              <button class="btn close-btn cancel-btn">cancel</button>
+            <div className="flex">
+              <button className="btn save-btn">save</button>
+              <button className="btn close-btn cancel-btn">cancel</button>
             </div>
           </div>
         </div>
