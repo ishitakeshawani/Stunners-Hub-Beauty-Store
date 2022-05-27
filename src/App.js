@@ -27,14 +27,7 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route
-          path="/products"
-          element={
-            <RequireAuth isLoggedIn={isLoggedIn}>
-              <Products />
-            </RequireAuth>
-          }
-        />
+        <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route
