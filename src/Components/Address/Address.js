@@ -27,10 +27,10 @@ export function Address() {
     <div className="address">
       <div className="address-sec">
         <div className="address-title">
-          {address.name ? `Deliver to: ${address.name}` : `Address`}
+          {address?.name ? `Deliver to: ${address?.name}` : `Address`}
         </div>
         <div className="detail-address">
-          {address.address ? address.address : "Please add address here"}
+          {address?.address ? address?.address : "Please add address here"}
         </div>
       </div>
       <button
