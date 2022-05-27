@@ -14,7 +14,7 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 48rem) {
+@media only screen and (max-width: 48em) {
   .wishlist {
     margin: 2rem;
   }
@@ -36,7 +36,11 @@
   }
 }
 
-@media only screen and (max-width: 30rem) {
+@media only screen and (max-width: 30em) {
+  .wishlist {
+    display: flex;
+    flex-direction: column;
+  }
   .wishlist-cards-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -52,7 +56,7 @@
   }
 }
 
-@media only screen and (max-width: 120rem) {
+@media only screen and (max-width: 12rem) {
   .wishlist {
     margin: 3.1rem;
     justify-content: center;

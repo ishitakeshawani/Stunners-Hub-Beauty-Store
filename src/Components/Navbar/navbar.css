@@ -68,4 +68,7 @@
     align-items: center;
     margin-left: auto;
   }
+  .mainMenuShow a {
+    margin-top: 1rem;
+  }
 }

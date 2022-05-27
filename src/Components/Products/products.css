@@ -175,13 +175,12 @@ body {
   grid-template-columns: repeat(2, 1fr);
 }
 
-@media only screen and (max-width: 64em) {
+@media only screen and (max-width: 67em) {
   .wrapper {
     overflow-x: hidden;
   }
   .filter {
-    width: 15rem;
-    padding: 10px;
+    display: none;
   }
   .hide-icon {
     display: none;
@@ -207,7 +206,7 @@ body {
     font-size: 0.79rem;
   }
   .card {
-    width: 0.79rem;
+    /* width: 0.79rem; */
     height: fit-content;
   }
   .product-page {
@@ -325,5 +324,12 @@ body {
   .filter {
     height: 80vh;
     overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
+
+@media only screen and (max-width: 81em) {
+  .filter {
+    display: none;
   }
 }
